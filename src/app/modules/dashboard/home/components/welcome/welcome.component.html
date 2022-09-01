@@ -5,22 +5,33 @@
         </svg>    
     </div>    
     <div class="mt-8 text-center">      
-        <h1 class="text-4xl text-primary">Welcome to Tailwindtemplates</h1>      
+        <h1 class="text-4xl text-primary">Welcome to Linkly</h1>      
         <p class="mx-auto mt-4 lg:w-1/2 text-gray-500">A repository of free components built with tailwindcss. Every component is responsive, customizable and carefully crafted for your use.</p>    
     </div>    
 
-    <div class="w-2/5 text-center mt-8 space-y-5 border rounded-xl bg-white p-5">
-        <form action="" class="space-y-2">
-            <div >
-                <input id="email-address" name="email" type="email" autocomplete="email" required class="input input-bordered w-full" placeholder="Title">
-            </div>
+    <div class="w-2/5 mt-8 space-y-5 border rounded-xl bg-white p-5">
+        <form [formGroup]="newPageForm" (ngSubmit)="createPage()" class="space-y-2">
             <div>
-                <input id="email-address" name="email" type="email" autocomplete="email" required class="input input-bordered w-full" placeholder="Email address">
+                <input formControlName="title" type="text" required class="input input-bordered w-full" placeholder="Page Title">
+                <app-error [control]="newPageForm.get('title')" name="Page Title"></app-error>
             </div>
+
             <div>
-                <textarea name="" class="textarea textarea-bordered resize-none w-full" placeholder="Page Description" id=""></textarea>
+                <div class="flex input input-bordered px-0 ">
+                    <div class="inline border-r px-3 py-2 font-medium text-gray-600">http://localhost:4200/</div>
+                    <input formControlName="slug" type="text" placeholder="(ex. https://goolge.com)" class="bg-transparent flex-1 border-transparent py-1 text-gray-600 px-4 focus:outline-none" />
+                </div>
+                <app-error [control]="newPageForm.get('slug')" name="Slug"></app-error>
             </div>
-            <button class="btn btn-primary w-full">Create Page</button>    
+
+            <div>
+                <textarea formControlName="desc" class="textarea textarea-bordered resize-none w-full" placeholder="Page Description" id=""></textarea>
+                <app-error [control]="newPageForm.get('desc')" name="Description"></app-error>
+            </div>
+
+            <div>
+                <button class="btn btn-primary w-full" type="submit">Create Page</button>    
+            </div>
         </form>
     </div>
     <button class="mt-2 block rounded-lg bg-transparent py-1.5 px-4 font-medium text-blue-600 transition-colors hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50">Learn more</button>  

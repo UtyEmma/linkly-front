@@ -1,1 +1,88 @@
-<p>register works!</p>
+<section class="min-h-screen">
+    <div class="flex min-h-screen overflow-hidden">
+        <div class="relative w-3/5 hidden overflow-hidden lg:block">
+            <img class="absolute inset-0 object-cover w-full h-full bg-black" src="/assets/images/placeholders/rectangleWide.png" alt="">
+        </div>
+        <div class="flex flex-col justify-center flex-1 px-4 py-12 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-24 lg:w-2/5">
+            <div class="w-full max-w-xl mx-auto">
+                <div>
+                    <a href="./index.html" class="text-blue-600 text-medium">Linkly</a>
+                    <h2 class="mt-6 text-3xl font-extrabold text-neutral-600">Get Started Here.</h2>
+                    <div class="text-sm">
+                        Already have an account? 
+                        <a routerLink="/login" class="font-medium text-blue-600 hover:text-blue-500">Login</a>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <div class="mt-6">
+                        <form [formGroup]="registerForm" (ngSubmit)="register()" class="space-y-4">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-neutral-600"> Name </label>
+                                <div class="mt-1">
+                                    <input name="name" type="text" autocomplete="name" required="" formControlName="name" placeholder="Your Name" class="input input-bordered w-full">
+                                    <app-error [control]="registerForm.get('name')" name="Name"></app-error>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-neutral-600"> Email address </label>
+                                <div class="mt-1">
+                                    <input id="email" name="email" type="email" autocomplete="email" formControlName="email" required="" placeholder="Your Email" class="input input-bordered w-full">
+                                    <app-error [control]="registerForm.get('email')" name="Email address" ></app-error>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <label for="password" class="block text-sm font-medium text-neutral-600"> Password </label>
+                                    <div class="mt-1">
+                                        <input id="password" name="password" type="password" formControlName="password" autocomplete="current-password" required="" placeholder="Your Password" class="input w-full input-bordered">
+                                        <app-error [control]="registerForm.get('password')" name="Password" ></app-error>
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <label for="password" class="block text-sm font-medium text-neutral-600"> Confirm Password </label>
+                                    <div class="mt-1">
+                                        <input id="password-confirmation" name="password_confirmation" formControlName="password" type="password" autocomplete="current-password" required="" name="Password Confirmation" placeholder="Your Password" class="input w-full input-bordered">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-primary w-full">Sign in</button>
+                            </div>
+                        </form>
+                        <div class="relative my-4">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 text-neutral-600 bg-white"> Or continue with </span>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-ghost shadow-md w-full">
+                                <div class="flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6" viewBox="0 0 48 48">
+                                        <defs>
+                                            <path id="a" d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"></path>
+                                        </defs>
+                                        <clipPath id="b">
+                                            <use xlink:href="#a" overflow="visible"></use>
+                                        </clipPath>
+                                        <path clip-path="url(#b)" fill="#FBBC05" d="M0 37V11l17 13z"></path>
+                                        <path clip-path="url(#b)" fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z"></path>
+                                        <path clip-path="url(#b)" fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z"></path>
+                                        <path clip-path="url(#b)" fill="#4285F4" d="M48 48L17 24l-4-3 35-10z"></path>
+                                    </svg>
+                                    <span class="ml-4"> Log in with Google</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

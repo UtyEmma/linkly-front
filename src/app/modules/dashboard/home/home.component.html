@@ -1,4 +1,6 @@
-<!-- <app-dashboard> -->
-    <!-- <app-welcome></app-welcome> -->
-    <!-- <app-main></app-main> -->
-<!-- </app-dashboard> -->
+<app-dashboard >
+    <div class="py-5">
+        <app-welcome *ngIf="user?.pages && user?.pages.length < 0"></app-welcome>
+        <app-main *ngIf="user?.pages && user?.pages.length > 0" ></app-main>
+    </div>
+</app-dashboard>

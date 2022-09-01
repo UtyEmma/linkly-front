@@ -1,0 +1,13 @@
+<small class="uk-text-danger">
+	{{
+		control?.touched && control?.invalid
+
+		?
+
+		mapErrorsToItem(name, control?.errors)
+
+		:
+
+		null
+	}}
+</small>
