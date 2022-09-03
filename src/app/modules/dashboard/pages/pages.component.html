@@ -5,26 +5,26 @@
                 <div class="flex flex-col flex-grow overflow-y-auto">
                     <div class="flex items-center flex-shrink-0 px-4 h-14">
                         <h2 class="block text-xl font-medium tracking-tighter text-gray-900 transition duration-500 ease-in-out transform cursor-pointer hover:text-gray-900">
-                            wickedblocks
+                            {{page?.title}}
                         </h2>
                     </div>
                     <div class="flex-1 h-full flex flex-col  px-4 mt-5">
                         <nav class="flex-1 space-y-1 ">
                             <ul class="space-y-2">
                                 <li>
-                                    <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg px-3 focus:shadow-outline hover:bg-white hover:shadow-sm" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/pages">
+                                    <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg px-3 focus:shadow-outline hover:bg-white hover:shadow-sm" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/{{slug}}" >
                                         <i-feather name="link-2" class=""></i-feather>
                                         <span class="ml-4">Links</span>
-                                    </a>
+                                    </a> 
                                 </li>
                                 <li>
-                                    <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg focus:shadow-outline px-3 hover:bg-white hover:shadow-sm" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/pages/settings">
+                                    <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg focus:shadow-outline px-3 hover:bg-white hover:shadow-sm" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/{{slug}}/settings">
                                         <i-feather name="settings"></i-feather>
                                         <span class="ml-4">Settings</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg focus:shadow-outline px-3 hover:bg-white hover:shadow-sm" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/pages/analytics">
+                                    <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg focus:shadow-outline px-3 hover:bg-white hover:shadow-sm" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/{{slug}}/analytics">
                                         <i-feather name="pie-chart"></i-feather>
                                         <span class="ml-4">Analytics</span></a>
                                 </li>
@@ -48,7 +48,7 @@
 
             <div class="flex-1 max-h-full relative">
                 <div class="absolute left-0 right-0 top-0 bottom-0 overflow-y-scroll pb-5">
-                    <ng-content></ng-content>
+                    <ng-content ></ng-content>
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                 <div class="flex items-center gap-4  bg-white border rounded-xl p-3 py-2">
                     <div class="border-r px-2 flex-1">
                         <a href="">
-                            <span class="text-sm">https://localhost:4200/utyemma</span>
+                            <span class="text-sm">https://localhost:4200/{{page?.slug}}</span>
                         </a>
                     </div>
     

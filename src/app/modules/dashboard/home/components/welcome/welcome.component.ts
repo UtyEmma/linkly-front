@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -13,7 +14,8 @@ export class WelcomeComponent implements OnInit {
 
   constructor(
     private _fb: FormBuilder,
-    private _http: HttpClient
+    private _http: HttpClient,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,9 +27,13 @@ export class WelcomeComponent implements OnInit {
   }
 
   createPage(){
-    console.log(this.newPageForm.value);
     this._http.post('pages', this.newPageForm.value).subscribe((res: any) => {
-      console.log(res);
+      const url = res?.data.page.slug
+      return this._router.navigateByUrl(`/${url}`, {
+        state: {
+          page: res?.data.page
+        }
+      })
     })
   }
 

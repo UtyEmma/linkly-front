@@ -1,6 +1,6 @@
 <app-dashboard >
     <div class="py-5">
-        <app-welcome *ngIf="user?.pages && user?.pages.length < 0"></app-welcome>
+        <app-welcome *ngIf="user?.pages && user?.pages.length < 1"></app-welcome>
         <app-main *ngIf="user?.pages && user?.pages.length > 0" ></app-main>
     </div>
 </app-dashboard>

@@ -9,7 +9,9 @@ import { DashboardComponent } from '../dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { FeatherModule } from 'angular-feather';
 import * as FeatherIcons from 'angular-feather/icons';
-
+import { PageService } from 'src/app/providers/services/pages/page.service';
+import { LinkItemComponent } from './links/link-item/link-item.component';
+import {SharedModule as Shared} from '../../shared/shared.module';
 
 const Icons : any = FeatherIcons
 
@@ -19,11 +21,16 @@ const Icons : any = FeatherIcons
     LinksComponent,
     PagesComponent,
     SettingsComponent,
+    LinkItemComponent,
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     SharedModule,
+    Shared
   ],
+  providers: [
+    PageService
+  ]
 })
 export class PagesModule { }

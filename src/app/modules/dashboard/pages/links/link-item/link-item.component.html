@@ -1,0 +1,68 @@
+<div class="flex w-full bg-white hover:drop-shadow-lg border transition-all rounded-xl p-3">
+    <div class="pr-2 flex items-center">
+        <button class="btn btn-ghost btn-square btn-sm">
+            <i-feather name="more-vertical"></i-feather>
+        </button>
+    </div>
+    <div class="flex-1">
+        <p class="flex items-center">
+            <span *ngIf="title" class="font-semibold">{{linkData.title || "Link Title"}}</span>
+            <input #linkTitle class="input input-sm input-bordered input-primary mr-1" (blur)="updateLink($event)" name="title"  [hidden]="title" placeholder="Title" value="{{linkData.title}}" />
+            <button *ngIf="title" (click)="toggleInput('title', false)" class="btn btn-square btn-xs btn-ghost ml-1">
+                <i-feather name="edit-3" style="width: 14px; height: 14px;" ></i-feather>
+            </button>
+            <button *ngIf="!title" (click)="toggleInput('title', true)"  class="btn btn-square btn-primary btn-xs ml-1">
+                <i-feather name="check" style="width: 14px; height: 14px;" ></i-feather>
+            </button>
+        </p>
+        
+        <p class="flex items-center">
+            <span *ngIf="url" class="text-gray-700">{{linkData.url || "https://myawesomelink.com"}}</span>
+            <input class="input input-sm input-bordered input-primary mr-1" (blur)="updateLink($event)" name="url"  [hidden]="url" placeholder="URL" value="{{linkData.url}}" />
+            <button *ngIf="url" (click)="toggleInput('url', false)" class="btn btn-square btn-xs btn-ghost ml-1">
+                <i-feather name="edit-3" style="width: 14px; height: 14px;" ></i-feather>
+            </button>
+            <button *ngIf="!url" (click)="toggleInput('url', true)"  class="btn btn-square btn-primary btn-xs ml-1">
+                <i-feather name="check" style="width: 14px; height: 14px;" ></i-feather>
+            </button>
+        </p>
+
+        <div class="flex items-center">
+            <div class="dropdown">
+                <label tabindex="0" class="btn btn-sm btn-square btn-ghost mr-2">
+                    <i-feather name="link" style="width: 14px; height: 14px;" ></i-feather>
+                </label>
+                <div tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box">
+                    <div class="form-control ">
+                        <label for="" class="text-sm text-medium">Shorten Link</label>
+
+                        <div class="flex space-x-2 items-center">
+                            <label class="input-group input-group-sm">
+                              <span class="px-2">localhost:4200/</span>
+                              <input type="text" (blur)="updateLink($event)" [value]="linkData.shortlink" name="shortlink" placeholder="info@site.com" class="input border-l-0 input-bordered input-sm" />
+                            </label>
+                            
+                            <button (click)="generateShortLink()"  class="btn btn-primary btn-square btn-outline btn-sm ml-1">
+                                <i-feather name="zap" style="width: 14px; height: 14px;" ></i-feather>
+                            </button>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <p class="flex items-center">
+                <i-feather name="bar-chart" style="width: 14px; height: 14px;" ></i-feather>
+                <span class="ml-1 text-sm font-medium">2 Clicks</span>
+            </p>
+        </div>
+    </div>
+    <div>
+        <div class="flex flex-col justify-between h-full">
+            <!-- <input type="checkbox" class="toggle toggle-sm" [checked]="linkData.status" (change)="toggleStatus($event)"> -->
+            <app-switch [onChange]="toggleStatus" [defaultChecked]="linkData.status" ></app-switch>
+            
+            <button class="btn btn-square btn-sm btn-ghost ml-1">
+                <i-feather name="trash-2" style="width: 16px; height: 16px;" ></i-feather>
+            </button>
+        </div>
+    </div>
+</div>
