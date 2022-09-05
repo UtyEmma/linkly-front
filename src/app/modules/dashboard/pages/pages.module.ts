@@ -16,9 +16,9 @@ import { MockupComponent } from './mockup/mockup.component';
 import { ShorturlComponent } from './links/link-item/shorturl/shorturl.component';
 import { LinkIconComponent } from './links/link-item/link-icon/link-icon.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const Icons : any = FeatherIcons
-
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ const Icons : any = FeatherIcons
     ReactiveFormsModule,
     SharedModule,
     Shared,
+    DragDropModule
   ],
   providers: [
     PageService

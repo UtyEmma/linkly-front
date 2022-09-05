@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterState } from '@angular/router';
 import { PageService } from 'src/app/providers/services/pages/page.service';
-import { copy } from 'src/library/navigator';
 import Str from 'src/library/Str';
 
 @Component({
@@ -51,5 +50,8 @@ export class PagesComponent implements OnInit {
       text: "Share two"
     })
   }
+
+
+  
 
 }

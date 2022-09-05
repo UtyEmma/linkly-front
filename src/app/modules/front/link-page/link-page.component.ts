@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import _cookies from 'src/app/providers/providers/cookies.provider';
 import { PageService } from 'src/app/providers/services/pages/page.service';
-
+import { DeviceDetectorService } from 'ngx-device-detector';
 @Component({
   selector: 'app-link-page',
   templateUrl: './link-page.component.html',
@@ -15,10 +15,12 @@ export class LinkPageComponent implements OnInit {
   slug!: string
   session_id!: string
   session_key: string = 'lly_sess_id'
+  deviceInfo!: any
 
   constructor(
     private _http: HttpClient,
     private _route: ActivatedRoute,
+    private deviceService:  DeviceDetectorService
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,14 @@ export class LinkPageComponent implements OnInit {
     }).subscribe((res) => {
       console.log(res)
     })
+  }
+
+  getDevice(){
+    this.deviceInfo = this.deviceService.getDeviceInfo();
+    if(this.deviceService.isMobile()) return 'mobile'
+    if(this.deviceService.isTablet()) return 'tablet'
+    if(this.deviceService.isDesktop()) return 'pc'
+    return 'unknown'
   }
 
   

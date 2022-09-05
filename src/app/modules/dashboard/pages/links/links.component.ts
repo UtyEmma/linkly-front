@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { PageService } from 'src/app/providers/services/pages/page.service';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 export type LinkItemType = {
   title: string,
@@ -29,13 +30,12 @@ export class LinksComponent implements OnInit, OnChanges {
 
   constructor(
     private _pageService: PageService,
-    private _http: HttpClient
+    private _http: HttpClient,
   ) { }
 
   ngOnInit(): void {
     this._pageService.current.subscribe(page => {
       this.page = page
-      console.log(page?.links)
       this.links = page?.links || []
       if(this.links.length < 1) this.addLink()
     })
@@ -51,5 +51,10 @@ export class LinksComponent implements OnInit, OnChanges {
         this.links = res.data.links
       }
     )
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.links, event.previousIndex, event.currentIndex);
+    console.log(event)
   }
 }

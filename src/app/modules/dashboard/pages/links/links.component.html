@@ -7,15 +7,15 @@
         <div class="w-4/6 mx-auto">
             <div class="grid mt-5 grid-cols-2 w-full gap-5">
                 <div>
-                    <button class="btn btn-primary w-full" (click)="addLink()" >Add New Link</button>
+                    <button class="btn btn-primary w-full rounded-full" (click)="addLink()" >Add New Link</button>
                 </div>
-                <button class="btn btn-outline btn-primary w-full">Choose a Link</button>
+                <button class="btn btn-outline btn-primary rounded-full w-full">Choose a Link</button>
             </div>
 
             <app-icon-picker></app-icon-picker>
         
-            <div class="flex flex-col w-full mt-5 space-y-3">
-                <app-link-item  *ngFor="let link of links" [link]="link"></app-link-item>
+            <div class="flex flex-col w-full mt-5 space-y-3" cdkDropList (cdkDropListDropped)="drop($event)">
+                <app-link-item cdkDrag *ngFor="let link of links" [link]="link"></app-link-item>
             </div>
         </div>
     </div>
