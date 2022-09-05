@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-switch',
@@ -8,19 +8,26 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SwitchComponent implements OnInit {
 
   @Input('name') name! : string;
-  @Input('defaultChecked') defaultChecked! : boolean
+  @Input('defaultChecked') defaultChecked : boolean = false
   @Input('class') class!: string
   @Input('onChange') onChange!: any
+  @Input('disabled') disabled: any = false
 
-  checked: boolean = this.defaultChecked || false;
+  @Output() change: EventEmitter<any> = new EventEmitter()
+
+  checked: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+    this.checked = this.defaultChecked
   }
 
   toggleSwitch(e: any){
+    console.log("this.disabled")
+    console.log(this.disabled)
+    if(this.disabled) return e.preventDefault()
     this.checked = e.target.checked
-    this.onChange(e)
+    this.change.emit(true)
   }
 
 }

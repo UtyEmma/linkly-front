@@ -6,6 +6,7 @@ import { DashboardComponent } from '../dashboard.component';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { UserService } from 'src/app/providers/services/user/user.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { UserService } from 'src/app/providers/services/user/user.service';
   imports: [
     CommonModule,
     FeatherModule.pick(allIcons),
+    RouterModule
   ],
   exports: [
     HeaderComponent,

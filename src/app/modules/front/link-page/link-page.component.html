@@ -1,0 +1,42 @@
+<div class="flex justify-center bg-slate-500 min-h-screen">
+    <div class="flex flex-col lg:w-5/12 md:w-5/6 justify-between items-center px-4">
+        <div class="space-y-3 w-full text-center pt-16">
+            <div class="avatar mx-auto" *ngIf="page?.image">
+                <div class="w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src="{{page?.image}}" />
+                </div>
+            </div>
+            <div class="avatar placeholder mx-auto" *ngIf="!page?.image">
+                <div class="bg-neutral-focus text-neutral-content rounded-full w-28 ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <span class="text-3xl">{{page?.title.charAt(0).toUpperCase()}}</span>
+                </div>
+            </div>
+        
+            <div class="text-white text-center mt-10 space-y-2">
+                <h4 class="font-semibold text-xl">{{page?.title}}</h4>
+                <p>{{page?.desc}}</p>
+            </div>
+        </div>
+        
+        
+        <div class="lg:w-10/12 w-11/12 flex-1 mt-10 space-y-4 px-2">
+            <div *ngFor="let link of page?.links">
+                <div class="flex items-center space-x-2">
+                    <a href="{{link?.url}}"  class="btn btn-primary normal-case relative btn-block text-base flex-1" (click)="updateClick(link?.unique_id)" target="_blank" *ngIf="link?.status === 'published'" >
+                        <i-feather name="instagram" class="absolute top-3 left-3" ></i-feather>
+                        {{link?.title}}
+                    </a>
+                    
+                    <!-- <button class="btn btn-sm btn-outline btn-square btn-primary">
+                        <i-feather name="share-2" style="width: 15px; height: 15px;" ></i-feather>
+                    </button> -->
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="text-center w-full text-white py-3">
+            <p>Created with <a href="https://localhost.com" class="font-medium">Linkly</a>.</p>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,5 @@
-<label for="toggleTwo" class="flex items-center cursor-pointer select-none">
-    <div class="relative">
-       <input type="checkbox" [defaultChecked]="defaultChecked" [name]="name" (change)="toggleSwitch($event)" id="toggleTwo" class="sr-only">
-       <div class="block bg-[#E5E7EB] w-10 h-6 rounded-full"></div>
-       <div class="dot absolute top-1  w-4 h-4 rounded-full transition {{checked ? 'right-1 bg-primary' : 'left-1 bg-white'}} "  ></div>
-    </div>
+<label class="flex items-center cursor-pointer select-none relative">
+   <div class="absolute top-1 w-4 h-4 rounded-full transition {{checked ? 'bg-primary right-1' : 'bg-white left-1'}} "  ></div>
+   <input type="checkbox" [disabled]="disabled" [defaultChecked]="defaultChecked" [name]="name" (change)="toggleSwitch($event)" class="sr-only">
+   <div class="block bg-[#E5E7EB] w-10 h-6 rounded-full"></div>
  </label>

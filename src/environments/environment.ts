@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  apiBaseURL: 'http://localhost:8000/api'
+  apiBaseURL: 'http://localhost:8000/api',
+  appBaseURL: `${window.location.origin}/`
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

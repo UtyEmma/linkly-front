@@ -1,0 +1,46 @@
+<div class="mockup-phone ">
+    <div class="camera"></div> 
+    <div class="display ">
+        <div class="artboard artboard-demo phone-1 bg-slate-500 pt-14 px-5  justify-between items-center">
+
+            <div class="space-y-2 w-full text-center">
+                <div class="avatar mx-auto" *ngIf="page?.image">
+                    <div class="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <img src="{{page?.image}}" />
+                    </div>
+                </div>
+                <div class="avatar placeholder mx-auto" *ngIf="!page?.image">
+                    <div class="bg-neutral-focus text-neutral-content rounded-full w-20 ring ring-primary ring-offset-base-100 ring-offset-2">
+                      <span class="text-3xl">{{page?.title.charAt(0).toUpperCase()}}</span>
+                    </div>
+                </div>
+
+                <div class="text-white text-center">
+                    <h4 class="font-semibold">{{page?.title}}</h4>
+                    <small>{{page?.desc}}</small>
+                </div>
+            </div>
+
+
+            <div class="w-full flex-1 mt-2 space-y-2 px-2">
+                <div *ngFor="let link of page?.links">
+                    <div class="flex items-center space-x-2" *ngIf="link?.status === 'published'">
+                        <a href="{{link?.url}}"  class="btn btn-primary normal-case relative btn-block flex-1" target="_blank"  >
+                            <i-feather name="instagram" class="absolute top-3 left-3" ></i-feather>
+                            {{link?.title}}
+                        </a>
+                        
+                        <!-- <button class="btn btn-sm btn-outline btn-square btn-primary">
+                            <i-feather name="share-2" style="width: 15px; height: 15px;" ></i-feather>
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="text-center w-full text-white py-3">
+                <small>Created with <a href="https://localhost.com" class="font-medium">Linkly</a>.</small>
+            </div>
+        </div>
+    </div>
+</div>

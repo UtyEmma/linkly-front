@@ -12,6 +12,10 @@ import * as FeatherIcons from 'angular-feather/icons';
 import { PageService } from 'src/app/providers/services/pages/page.service';
 import { LinkItemComponent } from './links/link-item/link-item.component';
 import {SharedModule as Shared} from '../../shared/shared.module';
+import { MockupComponent } from './mockup/mockup.component';
+import { ShorturlComponent } from './links/link-item/shorturl/shorturl.component';
+import { LinkIconComponent } from './links/link-item/link-icon/link-icon.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const Icons : any = FeatherIcons
 
@@ -22,12 +26,16 @@ const Icons : any = FeatherIcons
     PagesComponent,
     SettingsComponent,
     LinkItemComponent,
+    MockupComponent,
+    ShorturlComponent,
+    LinkIconComponent,
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
+    ReactiveFormsModule,
     SharedModule,
-    Shared
+    Shared,
   ],
   providers: [
     PageService

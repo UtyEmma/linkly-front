@@ -10,63 +10,70 @@
                     <h3 class="text-xl">Page Information</h3>
                 </div>
         
-                <div class="bg-white rounded-xl p-4 py-10 shadow-sm">
-                    <div class="w-3/5 grid grid-cols-5 gap-3 place-items-center">
-                        <div class="col-span-2">
+                <div class="card bg-white space-y-3 shadow-sm">
+                    <form [formGroup]="infoForm" (submit)="updatePage()" class="card-body">
+                        <div class="flex gap-3 items-center px-5">
                             <div class="avatar">
                                 <div class="w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                  <img src="https://placeimg.com/192/192/people" />
+                                    <img [src]="page?.image || 'https://placeimg.com/192/192/people'" />
                                 </div>
+                            </div>
+        
+                            <div class="flex-1 space-x-2">
+                                <button class="btn btn-sm btn-primary btn-square ">
+                                    <i-feather name="edit" style="width: 16px; height: 16px;"></i-feather>
+                                </button>
+                                <button class="btn btn-sm btn-square btn-ghost mt-2">
+                                    <i-feather name="trash" style="width: 16px; height: 16px;"></i-feather>
+                                </button>
                             </div>
                         </div>
     
-                        <div class="col-span-3">
-                            <button class="btn w-full btn-primary ">Select Logo Image</button>
-                            <button class="btn w-full btn-ghost mt-2">Remove Image</button>
+                        <div class="form-control w-full">
+                            <label class="label"><span class="label-text">Page Title</span></label>
+                            <input type="text" formControlName="title" placeholder="Title" class="input input-bordered w-full" />
+                            <app-error [control]="infoForm.get('title')" ></app-error>
                         </div>
-                    </div>
-                    <div class="form-control w-full">
-                        <label class="label"><span class="label-text">Page Title</span></label>
-                        <input type="text" placeholder="Title" class="input input-bordered w-full" />
-                    </div>
-    
-                    <div class="form-control w-full">
-                        <label class="label"><span class="label-text">Page Title</span></label>
-                        <div class="flex input input-bordered border px-0 border-gray-200">
-                            <div class="inline border-r px-3 py-2  text-gray-600">http://localhost:4200/</div>
-                            <input
-                              type="text"
-                              placeholder="(ex. https://goolge.com)"
-                              value="tailwindtemplates.io"
-                              class="bg-transparent flex-1 border-transparent py-1 text-gray-600 px-4 focus:outline-none"
-                            />
+                        
+                        <div class="form-control w-full">
+                            <label class="label"><span class="label-text">Page URL</span></label>
+                            <div class="flex items-center input input-bordered border px-0 border-gray-200">
+                                <div class="inline border-0 pl-3 py-2 text-gray-600">http://localhost:4200/</div>
+                                <input type="text" formControlName="slug" placeholder="(ex. https://goolge.com)" class="bg-transparent flex-1 border-transparent py-1 text-gray-600 px-0 focus:outline-none"/>
+                                <app-error [control]="infoForm.get('slug')" ></app-error>
+                                
+                            </div>
                         </div>
-                    </div>
-        
-                    <div class="form-control w-full">
-                        <label class="label"><span class="label-text">Page Description</span></label>
-                        <textarea class="textarea textarea-bordered w-full resize-none" placeholder="Description"></textarea>
-                    </div>
+                        
+                        <div class="form-control w-full">
+                            <label class="label"><span class="label-text">Page Description</span></label>
+                            <textarea formControlName="desc" class="textarea textarea-bordered w-full resize-none" placeholder="Description"></textarea>
+                            <app-error [control]="infoForm.get('desc')" ></app-error>
+                        </div>
+
+                        <div class="card-actions">
+                            <div class="flex justify-end">
+                                <button class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
     
-            <div>
+            <div class="mt-4">
                 <div class="py-2">
-                    <h3 class="text-xl">Appearance</h3>
+                    <h3 class="text-xl font-semibold">Appearance</h3>
                 </div>
         
-                <div class="bg-white rounded-xl p-4 py-10 shadow-sm">
-                    <div class="w-3/5 grid grid-cols-5 gap-3 place-items-center">
-                        
-                    </div>
-                    <div class="form-control w-full">
-                        <label class="label"><span class="label-text">Page Title</span></label>
-                        <input type="text" placeholder="Title" class="input input-bordered w-full" />
-                    </div>
-        
-                    <div class="form-control w-full">
-                        <label class="label"><span class="label-text">Page Description</span></label>
-                        <textarea class="textarea textarea-bordered w-full resize-none" placeholder="Description"></textarea>
+                <div class="card bg-white shadow-sm">
+                    <div class="card-body">
+                        <div class="grid grid-cols-4 gap-3 place-items-center">
+                            <label class=" h-40 bg-indigo-400 rounded-md w-full border-0 cursor-pointer btn btn-outline relative" >
+                                <i-feather name="check" class="hidden peer-checked:block"></i-feather>
+                                <input type="checkbox" ngClass="sr-only" name="background" value="blue" />
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>

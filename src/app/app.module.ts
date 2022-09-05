@@ -10,6 +10,8 @@ import { RegisterComponent } from './modules/auth/register/register.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { INTERCEPTORS } from './providers/interceptors/interceptor.provider';
 import { UserService } from './providers/services/user/user.service';
+import { FrontModule } from './modules/front/front.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { UserService } from './providers/services/user/user.service';
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FrontModule,
+    BrowserAnimationsModule
   ],
   providers: [
     INTERCEPTORS,

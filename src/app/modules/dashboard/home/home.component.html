@@ -3,4 +3,6 @@
         <app-welcome *ngIf="user?.pages && user?.pages.length < 1"></app-welcome>
         <app-main *ngIf="user?.pages && user?.pages.length > 0" ></app-main>
     </div>
+
+    <app-footer></app-footer>
 </app-dashboard>

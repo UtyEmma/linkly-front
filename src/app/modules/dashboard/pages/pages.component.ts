@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterState } from '@angular/router';
 import { PageService } from 'src/app/providers/services/pages/page.service';
+import { copy } from 'src/library/navigator';
+import Str from 'src/library/Str';
 
 @Component({
   selector: 'app-pages',
@@ -36,6 +38,18 @@ export class PagesComponent implements OnInit {
   loadPage(){
     if(this.state?.page) return this._pageService.set(this.state?.page)
     if(!this.page) this._http.get(`pages/${this.slug}`).subscribe((res: any) => this._pageService.set(res.data.page))
+  }
+
+  copyLink(link: string){
+    Str.parse(link).copy()
+  }  
+  
+  shareLink(){
+    const link = `https://localhost:4200/${this.page?.slug}`
+    Str.parse(link).share({
+      title: this.page?.title,
+      text: "Share two"
+    })
   }
 
 }

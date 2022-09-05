@@ -1,84 +1,80 @@
 <app-dashboard>
-    <div class="grid grid-cols-6 relative">
-        <div class="col-span-12 md:col-span-4 flex h-full sticky top-0">
-            <div class="h-full flex w-56 flex-col border-r sticky top-10">
-                <div class="flex flex-col flex-grow overflow-y-auto">
-                    <div class="flex items-center flex-shrink-0 px-4 h-14">
-                        <h2 class="block text-xl font-medium tracking-tighter text-gray-900 transition duration-500 ease-in-out transform cursor-pointer hover:text-gray-900">
-                            {{page?.title}}
-                        </h2>
-                    </div>
-                    <div class="flex-1 h-full flex flex-col  px-4 mt-5">
-                        <nav class="flex-1 space-y-1 ">
-                            <ul class="space-y-2">
-                                <li>
-                                    <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg px-3 focus:shadow-outline hover:bg-white hover:shadow-sm" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/{{slug}}" >
-                                        <i-feather name="link-2" class=""></i-feather>
-                                        <span class="ml-4">Links</span>
-                                    </a> 
-                                </li>
-                                <li>
-                                    <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg focus:shadow-outline px-3 hover:bg-white hover:shadow-sm" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/{{slug}}/settings">
-                                        <i-feather name="settings"></i-feather>
-                                        <span class="ml-4">Settings</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg focus:shadow-outline px-3 hover:bg-white hover:shadow-sm" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/{{slug}}/analytics">
-                                        <i-feather name="pie-chart"></i-feather>
-                                        <span class="ml-4">Analytics</span></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="flex flex-shrink-0 p-4 px-4">
-                        <a href="#" class="flex-shrink-0 block w-full group">
-                            <div class="flex items-center">
-                                <div>
-                                    <img class="inline-block rounded-full h-9 w-9" src="/assets/images/avatar.png" alt="">
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm font-medium text-gray-900">Wicked Labs</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+    <div class="flex relative h-full">
+        <div class="flex flex-col w-56  border-r  sticky top-10">
+            <div class="flex items-center flex-shrink-0 px-4 h-14">
+                <h2 class="block text-xl font-medium tracking-tighter text-gray-900 transition duration-500 ease-in-out transform cursor-pointer hover:text-gray-900 ">
+                    {{page?.title}}
+                </h2>
             </div>
-
-            <div class="flex-1 max-h-full relative">
-                <div class="absolute left-0 right-0 top-0 bottom-0 overflow-y-scroll pb-5">
-                    <ng-content ></ng-content>
-                </div>
+            <div class="flex-1 h-full flex flex-col  px-4 mt-5">
+                <nav class="flex-1 space-y-1 ">
+                    <ul class="space-y-2">
+                        <li>
+                            <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg px-3 focus:shadow-outline hover:bg-white hover:shadow-sm" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/{{slug}}" >
+                                <i-feather name="link-2" class=""></i-feather>
+                                <span class="ml-4">Links</span>
+                            </a> 
+                        </li>
+                        <li>
+                            <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg focus:shadow-outline px-3 hover:bg-white hover:shadow-sm" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/{{slug}}/settings">
+                                <i-feather name="settings"></i-feather>
+                                <span class="ml-4">Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="inline-flex items-center w-full py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg focus:shadow-outline px-3 hover:bg-white hover:shadow-sm" routerLinkActive="bg-white text-primary font-medium shadow-sm" routerLink="/{{slug}}/analytics">
+                                <i-feather name="pie-chart"></i-feather>
+                                <span class="ml-4">Analytics</span></a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-
+            <div class="flex flex-shrink-0 p-4 px-4">
+                <a href="#" class="flex-shrink-0 block w-full group">
+                    <div class="flex items-center">
+                        <div>
+                            <img class="inline-block rounded-full h-9 w-9" src="/assets/images/avatar.png" alt="">
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Wicked Labs</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
-        
-        <div class="border-l md:col-span-2 hidden md:flex md:flex-col ">
-            <div class="p-4 py-2 flex justify-center">
-                <div class="flex items-center gap-4  bg-white border rounded-xl p-3 py-2">
-                    <div class="border-r px-2 flex-1">
-                        <a href="">
-                            <span class="text-sm">https://localhost:4200/{{page?.slug}}</span>
-                        </a>
+
+        <div class="flex-1  min-h-full sticky top-0">
+            <div class="flex">
+                <div class="w-3/5 flex-1 min-h-full relative scrollbar-thin">
+                    <div class="absolute left-0 right-0 top-0 bottom-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 pb-5">
+                        <ng-content ></ng-content>
                     </div>
-    
-                    <div class="inline-flex gap-2">
-                        <button class="btn btn-sm btn-outline d-flex items-center justify-center">
-                            Share
-                        </button>
+                </div>
+                
+                <div class="border-l w-2/5 hidden md:flex md:flex-col ">
+                    <div class="py-4 flex justify-center">
+                        <div class="card space-x-2 items-center px-3 flex-row bg-white">
+                            <div class="px-2 flex-1">
+                                <a href="" class="text-sm btn btn-link normal-case py-0 px-0 underline">https://localhost:4200/{{page?.slug}}</a>
+                            </div>    
+        
+                            <button (click)="shareLink()" class="btn btn-sm normal-case text-sm btn-outline">
+                                <i-feather name="share-2" style="width: 16px; height: 16px;" class="mr-2" ></i-feather>
+                                Share Link
+                            </button>
+                        </div>
+                    </div>
+        
+                    <div class="flex h-full py-4 justify-center items-center  flex-1">
+                        <app-mockup></app-mockup>
                     </div>
                 </div>
             </div>
 
-            <div class="flex h-full py-4 justify-center items-center  flex-1">
-                <div class="mockup-phone">
-                    <div class="camera"></div> 
-                    <div class="display">
-                      <div class="artboard artboard-demo phone-1">Hi.</div>
-                    </div>
-                </div>
-            </div>
+            <!-- <div class="w-full flex-none">
+                <app-footer ></app-footer>
+            </div> -->
+            <!-- <app-footer></app-footer> -->
         </div>
     </div>
 
