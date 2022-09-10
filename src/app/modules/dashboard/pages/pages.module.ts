@@ -17,6 +17,10 @@ import { ShorturlComponent } from './links/link-item/shorturl/shorturl.component
 import { LinkIconComponent } from './links/link-item/link-icon/link-icon.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { ActivityChartComponent } from './analytics/activity-chart/activity-chart.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgChartsModule } from 'ng2-charts';
 
 const Icons : any = FeatherIcons
 
@@ -29,6 +33,8 @@ const Icons : any = FeatherIcons
     MockupComponent,
     ShorturlComponent,
     LinkIconComponent,
+    AnalyticsComponent,
+    ActivityChartComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +42,9 @@ const Icons : any = FeatherIcons
     ReactiveFormsModule,
     SharedModule,
     Shared,
-    DragDropModule
+    DragDropModule,
+    NgApexchartsModule,
+    NgChartsModule
   ],
   providers: [
     PageService

@@ -8,7 +8,9 @@ export type LinkItemType = {
   title: string,
   url: string,
   shorturl: string,
-  status: boolean
+  status: boolean,
+  position: number,
+  unique_id: string
 }
 
 @Component({
@@ -53,8 +55,34 @@ export class LinksComponent implements OnInit, OnChanges {
     )
   }
 
+  update(link: any){
+    this._http.put(`links/${this.page.unique_id}/${link.unique_id}`, {
+      title: link.title,
+      url: link.url,
+      position: link.position,
+      status: link.status
+    }).subscribe((res: any) => {
+      this._pageService.set({
+        ...this.page, 
+        links: res.data.links
+      })
+    })
+  }
+
+  updateOrder(){
+    const ids = this.links.map(link => link.unique_id!);
+    this._http.put(`links/${this.page.unique_id}/reorder`, {
+      links: ids
+    }).subscribe((res: any) => {
+      this._pageService.set({
+        ...this.page, 
+        links: res.data.links
+      })
+    } )
+  }
+  
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.links, event.previousIndex, event.currentIndex);
-    console.log(event)
+    this.updateOrder()
   }
 }

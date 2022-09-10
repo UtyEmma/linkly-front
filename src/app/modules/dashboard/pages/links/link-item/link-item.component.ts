@@ -1,4 +1,5 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { CdkDragHandle } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -36,6 +37,7 @@ export class LinkItemComponent implements OnInit, OnChanges  {
   @ViewChild('linkUrl') linkUrl!: ElementRef
 
   @Input() link! : any;
+  @Input() dragHandle! : CdkDragHandle;
 
   page : any = null 
   title: boolean = true
@@ -99,6 +101,7 @@ export class LinkItemComponent implements OnInit, OnChanges  {
       url: this.link.url,
       status: status ? this.link.status : null,
       image: this.link.image,
+      shorturl: this.link.shorturl
     }).subscribe((res: any) => {
       this._pageService.set({
         ...this.page, 

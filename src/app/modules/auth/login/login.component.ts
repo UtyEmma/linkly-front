@@ -14,12 +14,13 @@ import { IResponse } from 'src/types/http-response';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup
+  loading: boolean = false
 
   constructor(
     private _fb: FormBuilder, 
     private _http: HttpClient,
     private _auth: AuthService,
-    private _router: Router
+    private _router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -30,9 +31,11 @@ export class LoginComponent implements OnInit {
   }
 
   login () {
+    this.loading = true
     this._http.post('login', this.loginForm.value).subscribe(
-      ({data}: any) => {
-        if(data.token) this._auth.login(data.token, data.user)
+      (res: any) => {
+        this.loading = false
+        if(res.data.token) this._auth.login(res.data.token, res.data.user)
         return this._router.navigateByUrl('/')
       }
     )

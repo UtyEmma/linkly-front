@@ -30,9 +30,6 @@ export class HttpResponseInterceptor implements HttpInterceptor {
 							case 500:
 								// this._toasterService.error(data.message, "", {closeButton: true})
 								break;
-							case 400:
-								// this._toasterService.error(data.message, "", {closeButton: true})
-								break;
 							case 401:
 								this._auth.logout()
 								this._router.navigateByUrl('/login')

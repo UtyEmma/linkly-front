@@ -7,6 +7,8 @@ import { SwitchComponent } from './components/switch/switch.component';
 import { IconPickerComponent } from './components/icon-picker/icon-picker.component';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { FormsModule } from '@angular/forms';
 
 
 const Icons : any = FeatherIcons
@@ -14,10 +16,12 @@ const Icons : any = FeatherIcons
   declarations: [
     ErrorComponent,
     SwitchComponent,
-    IconPickerComponent
+    IconPickerComponent,
+    DatepickerComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     FeatherModule.pick(Icons),
     TablerIconsModule.pick(TablerIcons)
   ],
@@ -26,7 +30,8 @@ const Icons : any = FeatherIcons
     ErrorComponent,
     SwitchComponent,
     TablerIconsModule,
-    IconPickerComponent
+    IconPickerComponent,
+    DatepickerComponent
   ]
 })
 export class SharedModule { }

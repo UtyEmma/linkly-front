@@ -45,7 +45,7 @@
                             </div>
 
                             <div>
-                                <button type="submit" class="btn btn-primary w-full">Sign in</button>
+                                <button type="submit" class="btn btn-primary w-full" [disabled]="loading" [ngClass]="loading ? 'loading' : ''" >Sign in</button>
                             </div>
                         </form>
                         <div class="relative my-4">

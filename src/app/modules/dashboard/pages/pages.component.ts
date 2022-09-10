@@ -44,7 +44,7 @@ export class PagesComponent implements OnInit {
   }  
   
   shareLink(){
-    const link = `https://localhost:4200/${this.page?.slug}`
+    const link = `http://localhost:4200/${this.page?.slug}`
     Str.parse(link).share({
       title: this.page?.title,
       text: "Share two"

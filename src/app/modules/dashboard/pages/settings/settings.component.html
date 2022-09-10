@@ -1,16 +1,16 @@
 <app-pages>
-    <div class="space-y-3">
+    <div class="space-y-3 ">
         <div class="h-14 border-b flex items-center sticky top-0 bg-white px-7 z-50">
             <h3 class="text-xl">Settings</h3>
         </div>
         
-        <div class="px-7">
+        <div class="w-4/6 mx-auto py-10">
             <div>
                 <div class="py-2">
                     <h3 class="text-xl">Page Information</h3>
                 </div>
         
-                <div class="card bg-white space-y-3 shadow-sm">
+                <div class="card bg-white">
                     <form [formGroup]="infoForm" (submit)="updatePage()" class="card-body">
                         <div class="flex gap-3 items-center px-5">
                             <div class="avatar">
@@ -57,7 +57,6 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
     
@@ -66,12 +65,44 @@
                     <h3 class="text-xl font-semibold">Appearance</h3>
                 </div>
         
-                <div class="card bg-white shadow-sm">
+                <div class="card bg-white">
                     <div class="card-body">
-                        <div class="grid grid-cols-4 gap-3 place-items-center">
-                            <label class=" h-40 bg-indigo-400 rounded-md w-full border-0 cursor-pointer btn btn-outline relative" >
-                                <i-feather name="check" class="hidden peer-checked:block"></i-feather>
-                                <input type="checkbox" ngClass="sr-only" name="background" value="blue" />
+                        <div class="grid grid-cols-4 gap-5 place-items-center">
+                            <label class="h-40 rounded-md w-full rounded-xl cursor-pointer relative border border-primary border-2" style="padding: 2px;" >
+                                <div class="bg-primary flex items-center justify-center h-full rounded-lg w-full">
+                                    <i-feather name="check" class="hidden text-white peer-checked:block"></i-feather>
+                                    <input type="checkbox" ngClass="sr-only" name="theme" value="blue" />
+                                </div>
+                            </label>
+                            <label class="h-40 rounded-md w-full rounded-xl cursor-pointer relative border border-primary border-2" style="padding: 2px;" >
+                                <div class="bg-primary flex items-center justify-center h-full rounded-lg w-full">
+                                    <i-feather name="check" class="hidden text-white peer-checked:block"></i-feather>
+                                    <input type="checkbox" ngClass="sr-only" name="theme" value="blue" />
+                                </div>
+                            </label>
+                            <label class="h-40 rounded-md w-full rounded-xl cursor-pointer relative border border-primary border-2" style="padding: 2px;" >
+                                <div class="bg-primary flex items-center justify-center h-full rounded-lg w-full">
+                                    <i-feather name="check" class="hidden text-white peer-checked:block"></i-feather>
+                                    <input type="checkbox" ngClass="sr-only" name="theme" value="blue" />
+                                </div>
+                            </label>
+                            <label class="h-40 rounded-md w-full rounded-xl cursor-pointer relative border border-primary border-2" style="padding: 2px;" >
+                                <div class="bg-primary flex items-center justify-center h-full rounded-lg w-full">
+                                    <i-feather name="check" class="hidden text-white peer-checked:block"></i-feather>
+                                    <input type="checkbox" ngClass="sr-only" name="theme" value="blue" />
+                                </div>
+                            </label>
+                            <label class="h-40 rounded-md w-full rounded-xl cursor-pointer relative border border-primary border-2" style="padding: 2px;" >
+                                <div class="bg-primary flex items-center justify-center h-full rounded-lg w-full">
+                                    <i-feather name="check" class="hidden text-white peer-checked:block"></i-feather>
+                                    <input type="checkbox" ngClass="sr-only" name="theme" value="blue" />
+                                </div>
+                            </label>
+                            <label class="h-40 rounded-md w-full rounded-xl cursor-pointer relative border border-primary border-2" style="padding: 2px;" >
+                                <div class="bg-primary flex items-center justify-center h-full rounded-lg w-full">
+                                    <i-feather name="check" class="hidden text-white peer-checked:block"></i-feather>
+                                    <input type="checkbox" ngClass="sr-only" name="theme" value="blue" />
+                                </div>
                             </label>
                         </div>
                     </div>

@@ -1,8 +1,6 @@
 <app-dashboard >
-    <div class="py-5">
+    <div class="py-5 max-w-7xl mx-auto">
         <app-welcome *ngIf="user?.pages && user?.pages.length < 1"></app-welcome>
         <app-main *ngIf="user?.pages && user?.pages.length > 0" ></app-main>
     </div>
-
-    <app-footer></app-footer>
 </app-dashboard>
