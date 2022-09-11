@@ -21,6 +21,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { ActivityChartComponent } from './analytics/activity-chart/activity-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgChartsModule } from 'ng2-charts';
+import { BackgroundComponent } from './settings/theme/background/background.component';
 
 const Icons : any = FeatherIcons
 
@@ -35,6 +36,7 @@ const Icons : any = FeatherIcons
     LinkIconComponent,
     AnalyticsComponent,
     ActivityChartComponent,
+    BackgroundComponent,
   ],
   imports: [
     CommonModule,

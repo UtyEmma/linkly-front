@@ -1,6 +1,6 @@
 <app-dashboard>
-    <div class="flex relative h-full">
-        <div class="flex flex-col w-56  border-r  sticky top-10">
+    <div class=" md:flex relative h-full">
+        <div class="md:flex hidden flex-col w-56  border-r h-screen md:h-auto bg-white fixed md:sticky top-10">
             <div class="flex items-center flex-shrink-0 px-4 h-14">
                 <h2 class="block text-xl font-medium tracking-tighter text-gray-900 transition duration-500 ease-in-out transform cursor-pointer hover:text-gray-900 ">
                     {{page?.title}}
@@ -29,7 +29,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="flex flex-shrink-0 p-4 px-4">
+            <!-- <div class="flex flex-shrink-0 p-4 px-4">
                 <a href="#" class="flex-shrink-0 block w-full group">
                     <div class="flex items-center">
                         <div>
@@ -40,13 +40,13 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
         </div>
 
-        <div class="flex-1  min-h-full sticky top-0">
-            <div class="flex">
-                <div class="w-3/5 flex-1 min-h-full relative scrollbar-thin">
-                    <div class="absolute left-0 right-0 top-0 bottom-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-700 scrollbar-track-gray-50 pb-5">
+        <div class="md:flex-1  min-h-full md:sticky top-0">
+            <div class="flex h-full">
+                <div class="md:w-3/5 w-full md:flex-1 min-h-full relative scrollbar-thin">
+                    <div class="md:absolute left-0 right-0 top-0 bottom-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-700 scrollbar-track-gray-50 pb-5">
                         <ng-content ></ng-content>
                     </div>
                 </div>
@@ -77,5 +77,4 @@
             <!-- <app-footer></app-footer> -->
         </div>
     </div>
-
 </app-dashboard> 

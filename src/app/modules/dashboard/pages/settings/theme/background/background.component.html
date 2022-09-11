@@ -1,0 +1,8 @@
+<div class="card rounded-xl">
+    <label class="h-48 rounded-xl p-1 cursor-pointer border-primary border-2" >
+        <div class="bg-primary flex items-center justify-center h-full rounded-lg w-full">
+            <i-feather name="check" class="text-white" [ngClass]="checked ? 'block' : 'hidden'"></i-feather>
+            <input type="checkbox" [checked]="checked" (change)="handleCheck($event)" class="sr-only" [name]="name" [value]="value" />
+        </div>
+    </label>    
+</div>

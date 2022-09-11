@@ -13,6 +13,7 @@ import { IResponse } from 'src/types/http-response';
 export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup
+  loading: boolean = false
   
   constructor(private _fb: FormBuilder, private _http: HttpClient, private _router: Router, private _auth: AuthService) { }
 
@@ -25,8 +26,10 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  register(){    
+  register(){
+    this.loading = true  
     this._http.post('register', this.registerForm.value).subscribe((res: any) => {
+      this.loading = true
       this._auth.login(res.data.token, res.data.user)
       this._router.navigateByUrl('/')
     })

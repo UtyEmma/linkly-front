@@ -9,6 +9,7 @@ import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { FormsModule } from '@angular/forms';
+import { SelectImgComponent } from './components/select-img/select-img.component';
 
 
 const Icons : any = FeatherIcons
@@ -17,7 +18,8 @@ const Icons : any = FeatherIcons
     ErrorComponent,
     SwitchComponent,
     IconPickerComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    SelectImgComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ const Icons : any = FeatherIcons
     SwitchComponent,
     TablerIconsModule,
     IconPickerComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    SelectImgComponent
   ]
 })
 export class SharedModule { }

@@ -22,6 +22,7 @@ export class LinksComponent implements OnInit, OnChanges {
 
   links: LinkItemType[] = []
   page: any
+  loading: boolean = false
 
   linkData: any = {
     title: "",
@@ -48,9 +49,11 @@ export class LinksComponent implements OnInit, OnChanges {
   }
 
   addLink(){
+    // this.loading = true
     this._http.post(`links/${this.page.unique_id}`, this.linkData).subscribe(
       (res: any) => {
         this.links = res.data.links
+        this.loading = false
       }
     )
   }
