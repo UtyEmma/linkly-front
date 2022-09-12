@@ -11,22 +11,6 @@ type EditableRef = 'title' | 'url' | 'status';
 @Component({
   selector: 'app-link-item',
   templateUrl: './link-item.component.html',
-  animations: [
-    trigger('openClose', [
-      state('open', style({
-        display: 'block',
-      })),
-      state('closed', style({
-        display: 'none'
-      })),
-      transition('open => closed', [
-        animate('2s')
-      ]),
-      transition('closed => open', [
-        animate('2s')
-      ]),
-    ]),
-  ],
   styleUrls: ['./link-item.component.scss']
 })
 
@@ -104,7 +88,7 @@ export class LinkItemComponent implements OnInit, OnChanges  {
       shorturl: this.link.shorturl
     }).subscribe((res: any) => {
       this._pageService.set({
-        ...this.page, 
+        ...this.page,
         links: res.data.links
       })
     })

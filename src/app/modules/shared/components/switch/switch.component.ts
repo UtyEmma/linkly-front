@@ -23,8 +23,6 @@ export class SwitchComponent implements OnInit {
   }
 
   toggleSwitch(e: any){
-    console.log("this.disabled")
-    console.log(this.disabled)
     if(this.disabled) return e.preventDefault()
     this.checked = e.target.checked
     this.change.emit(true)

@@ -18,6 +18,7 @@ export class SelectImgComponent implements OnInit {
   updateSrc(e: any){
     const file = e.target.files[0]
     const blob = URL.createObjectURL(file)
+    console.log(blob)
     this.src = blob
   }
 

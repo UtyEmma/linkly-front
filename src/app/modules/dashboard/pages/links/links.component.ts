@@ -39,8 +39,10 @@ export class LinksComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this._pageService.current.subscribe(page => {
       this.page = page
-      this.links = page?.links || []
-      if(this.links.length < 1) this.addLink()
+      if(page){
+        this.links = page?.links || []
+        if(page?.links.length < 1) this.addLink()
+      }
     })
   }
 
@@ -49,7 +51,7 @@ export class LinksComponent implements OnInit, OnChanges {
   }
 
   addLink(){
-    // this.loading = true
+    this.loading = true
     this._http.post(`links/${this.page.unique_id}`, this.linkData).subscribe(
       (res: any) => {
         this.links = res.data.links

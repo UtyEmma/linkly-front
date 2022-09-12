@@ -25,8 +25,9 @@
             <div class="w-full flex-1 mt-2 space-y-2 px-2">
                 <div *ngFor="let link of page?.links">
                     <div class="flex items-center space-x-2" *ngIf="link?.status === 'published'">
-                        <a href="{{link?.url}}"  class="btn btn-primary normal-case relative btn-block flex-1" target="_blank"  >
-                            <i-feather name="instagram" class="absolute top-3 left-3" ></i-feather>
+                        <a href="{{link?.url}}"  class="btn btn-primary normal-case relative btn-block flex-1" target="_blank">
+                            <i *ngIf="link.thumbnail === 'icon'" class="ti ti-{{link.icon}} absolute my-2 left-3 text-2xl" ></i>
+                            <img *ngIf="link.thumbnail === 'image'" class="absolute top-3 left-3" [src]="link.icon" alt="">
                             {{link?.title}}
                         </a>
                         
