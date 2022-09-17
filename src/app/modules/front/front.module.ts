@@ -5,6 +5,7 @@ import { FrontRoutingModule } from './front-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LinkPageComponent } from './link-page/link-page.component';
 import { FeatherModule } from 'angular-feather';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FeatherModule } from 'angular-feather';
   imports: [
     CommonModule,
     FrontRoutingModule,
-    FeatherModule
+    FeatherModule,
+    SharedModule
   ]
 })
 export class FrontModule { }

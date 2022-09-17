@@ -52,15 +52,13 @@
                 </div>
                 
                 <div class="border-l w-2/5 hidden md:flex md:flex-col ">
-                    <div class="py-4 flex justify-center">
-                        <div class="card space-x-2 items-center px-3 flex-row bg-white">
-                            <div class="px-2 flex-1">
-                                <a href="http://localhost:4200/{{page?.slug}}" target="_blank" class="text-sm btn btn-link normal-case py-0 px-0 underline">http://localhost:4200/{{page?.slug}}</a>
-                            </div>    
-        
-                            <button (click)="shareLink()" class="btn btn-sm normal-case text-sm btn-outline">
+                    <div class="h-14 border-b bg-white px-7 sticky top-0 z-50 ">
+                        <div class="w-10/12 flex justify-between items-center mx-auto">
+                            <a href="http://localhost:4200/{{page?.slug}}" target="_blank" class="text-sm btn btn-link normal-case py-0 px-0 underline">http://localhost:4200/{{page?.slug}}</a>
+                            
+                            <button (click)="shareLink()" class="btn btn-sm text-sm btn-outline">
                                 <i-feather name="share-2" style="width: 16px; height: 16px;" class="mr-2" ></i-feather>
-                                Share Link
+                                Share
                             </button>
                         </div>
                     </div>

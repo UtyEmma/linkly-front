@@ -1,4 +1,4 @@
-<div class="w-full bg-white hover:shadow-lg transition-shadow  rounded-xl">
+<div class="w-full bg-white hover:shadow-lg transition-shadow  rounded-xl link-item">
     <div class="flex space-x-1  p-5">
         <div class="w-1/12 flex items-center">
             <button class="btn btn-ghost btn-square btn-sm cursor-move" >
@@ -7,9 +7,9 @@
         </div>
         <div class="flex-1">
             <div class="flex space-x-2 items-center">
-                <div class="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-xl">
+                <div class="w-12 h-12 flex items-center justify-center overflow-auto p-2 bg-gray-100 rounded-xl">
                     <i *ngIf="link.thumbnail === 'icon'" class="ti ti-{{link.icon}} text-2xl" ></i>
-                    <img *ngIf="link.thumbnail === 'image'" class="absolute top-3 left-3" [src]="link.icon" alt="">
+                    <img *ngIf="link.thumbnail === 'image'" class="w-full h-full rounded-full" [src]="link.icon" alt="">
                 </div>
                 <div class="flex-1">
                     <p class="flex items-center">

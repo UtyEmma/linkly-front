@@ -13,16 +13,18 @@
     </div>
     <div class="flex flex-col h-80 space-y-3">
         <div class="border rounded-xl w-full flex items-center ">
-            <input type="text" (change)="searchIcons($event)" placeholder="Search for Icons…" class="input rounded-l-xl rounded-r-0 flex-1 border-0" />
+            <input type="text" (keyup)="searchIcons($event)" placeholder="Search for Icons…" class="input rounded-l-xl rounded-r-0 flex-1 border-0" />
             <i-tabler name="search" class="h-6 w-6 mx-4"></i-tabler>
         </div>
-        
-        <div class="flex overflow-y-scroll flex-1 scrollbar-thin scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-700 scrollbar-track-gray-50 flex-wrap gap-4">
-            <div  *ngFor="let icon of icons | keyvalue" class="">
-                <button (click)="select(icon.key)" for="" class="btn text-gray-600 btn-ghost btn-outline btn-square" [ngClass]="current === icon.key ? 'btn-active' : ''" >
-                    <i class="ti ti-{{icon.key}} text-3xl" style="stroke-width: 1px;" ></i>
-                </button>
-            </div>
+        <!--   -->
+        <div class="h-full">
+            <virtual-scroller class="h-full w-full overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-700 scrollbar-track-gray-50"  #scroll [items]="icons">
+                <div  *ngFor="let icon of scroll.viewPortItems"  class="w-14 h-14 inline-grid gap-4">
+                    <button (click)="select(icon[0])" for="" class="btn text-gray-600 btn-ghost btn-outline btn-square" [ngClass]="current === icon[0] ? 'btn-active' : ''" >
+                        <i class="ti ti-{{icon[0]}} text-3xl font-thin" style="stroke-width: 1px !important; " ></i>
+                    </button>
+                </div>
+            </virtual-scroller>
         </div>
     </div>
 

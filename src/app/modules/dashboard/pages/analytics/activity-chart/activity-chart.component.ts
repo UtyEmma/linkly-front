@@ -91,9 +91,6 @@ export class ActivityChartComponent implements OnInit {
               this.stats.visits.push(value.visits)
               this.stats.views.push(value.views)
             })
-
-            console.log(this.stats)
-
             this.show = true
           }
         )        

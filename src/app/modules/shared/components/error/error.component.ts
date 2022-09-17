@@ -8,8 +8,9 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 })
 export class ErrorComponent implements OnInit {
 
-  @Input() control!: AbstractControl | null
+  	@Input() control!: AbstractControl | null
 	@Input() name!: string;
+	@Input('submitted') submitted: boolean = false;
 
 	public mapFormErrors (items: FormGroup, attributes: any){
 		let errors = {}

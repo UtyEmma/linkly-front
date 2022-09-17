@@ -23,7 +23,6 @@ export class LinkIconComponent implements OnInit {
   }
 
   updateIcon(value: any){
-    console.log(value)
     this._http.put(`links/${this.page.unique_id}/${this.link.unique_id}`, {
       thumbnail: 'icon',
       icon: value,

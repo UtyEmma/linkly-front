@@ -10,7 +10,18 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { FormsModule } from '@angular/forms';
 import { SelectImgComponent } from './components/select-img/select-img.component';
-
+import { SafePipe } from './pipes/safe/safe.pipe';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
+import { ImgResizeComponent } from './components/img-resize/img-resize.component';
+import { LyImageCropperModule } from '@alyle/ui/image-cropper';
+import { LyButtonModule } from '@alyle/ui/button';
+import { LyIconModule } from '@alyle/ui/icon';
+import { LySliderModule } from '@alyle/ui/slider';
+import { LyTheme2, LY_THEME, LY_THEME_NAME } from '@alyle/ui';
+import { MinimaLight, MinimaDark } from '@alyle/ui/themes/minima';
+import { ModalComponent } from './components/modal/modal/modal.component';
+import {DialogModule} from '@angular/cdk/dialog';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 const Icons : any = FeatherIcons
 @NgModule({
@@ -19,13 +30,21 @@ const Icons : any = FeatherIcons
     SwitchComponent,
     IconPickerComponent,
     DatepickerComponent,
-    SelectImgComponent
+    SelectImgComponent,
+    SafePipe,
+    ImgResizeComponent,
+    ModalComponent,
+    AvatarComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     FeatherModule.pick(Icons),
-    TablerIconsModule.pick(TablerIcons)
+    TablerIconsModule.pick(TablerIcons),
+    VirtualScrollerModule,
+    LyImageCropperModule,
+    LySliderModule,
+    DialogModule
   ],
   exports: [
     FeatherModule,
@@ -34,7 +53,19 @@ const Icons : any = FeatherIcons
     TablerIconsModule,
     IconPickerComponent,
     DatepickerComponent,
-    SelectImgComponent
+    SelectImgComponent,
+    SafePipe,
+    ImgResizeComponent,
+    ModalComponent,
+    AvatarComponent
+  ],
+  providers: [
+    [ LyTheme2 ],
+    // Theme that will be applied to this module
+    { provide: LY_THEME_NAME, useValue: 'minima-light' },
+    { provide: LY_THEME, useClass: MinimaLight, multi: true }, // name: `minima-light`
+    { provide: LY_THEME, useClass: MinimaDark, multi: true }, // name: `minima-dark`
+    // Gestures
   ]
 })
 export class SharedModule { }

@@ -23,8 +23,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgChartsModule } from 'ng2-charts';
 import { BackgroundComponent } from './settings/theme/background/background.component';
 import { AppearanceComponent } from './appearance/appearance.component';
-
-const Icons : any = FeatherIcons
+import { LinkImgComponent } from './links/link-item/link-icon/link-img/link-img.component';
+import {CdkStepperModule} from '@angular/cdk/stepper';
+import {NgxPhotoEditorModule} from "ngx-photo-editor";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,8 @@ const Icons : any = FeatherIcons
     ActivityChartComponent,
     BackgroundComponent,
     AppearanceComponent,
+    LinkImgComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -48,7 +51,9 @@ const Icons : any = FeatherIcons
     Shared,
     DragDropModule,
     NgApexchartsModule,
-    NgChartsModule
+    NgChartsModule,
+    CdkStepperModule,
+    NgxPhotoEditorModule
   ],
   providers: [
     PageService

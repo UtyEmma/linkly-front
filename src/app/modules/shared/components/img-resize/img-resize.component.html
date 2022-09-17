@@ -1,0 +1,70 @@
+<div class="flex flex-col h-full">
+    <div *ngIf="ready" class="space-x-3 mb-3 flex items-center justify-between">
+        <button class="btn btn-primary space-x-2" (click)="_fileInput.click()">
+          <i-tabler name="photo"></i-tabler>
+          <span>Select File</span>
+        </button>
+        <div class="btn-group rounded-none">
+            <button (click)="cropper.zoomIn()" class="btn rounded-none btn-square btn-ghost  btn-sm">
+                <i-tabler name="zoom-in"></i-tabler>
+            </button>
+            <button (click)="cropper.zoomOut()" class="btn btn-square btn-ghost btn-sm">
+                <i-tabler name="zoom-out"></i-tabler>
+            </button>
+            <button (click)="cropper.center()" class="btn btn-square btn-ghost  btn-sm">
+                <i-tabler name="focus-centered"></i-tabler>
+            </button>
+            <button (click)="cropper.rotate(-90)" class="btn btn-square btn-ghost btn-sm">
+                <i-tabler name="rotate-clockwise"></i-tabler>
+            </button>
+        </div>
+    
+        <div>
+            <!-- <button (click)="cropper.fit()" class="btn btn-ghost btn-outline">Fit</button>
+            <button (click)="cropper.fitToScreen()" class="btn btn-primary btn-outline">Fit to screen</button>
+            <button (click)="cropper.setScale(1)" class="btn btn-square btn-primary btn-outline">1:1</button> -->
+            <button (click)="cropper.clean()" class="btn btn-primary btn-outline">Clean</button>
+        </div>
+    </div>
+    
+    <div class="flex-1">
+        <ly-img-cropper class="aspect-1 rounded-xl " *ngIf="!croppedImage" [config]="myConfig"
+          [(scale)]="scale" (minScale)="minScale = $event" (ready)="ready = true" (cleaned)="ready = false"
+          (cropped)="onCropped($event)" (loaded)="onLoaded($event)" (error)="onError($event)"
+        >
+          <span>Drag and drop image</span>
+        </ly-img-cropper>
+      
+        <div class="aspect-1 rounded-xl bg-gray-100 p-5" *ngIf="croppedImage">
+          <div class="h-full w-full">
+              <img class="rounded-full w-full h-full"  [src]="croppedImage">
+          </div>
+        </div>
+    </div>
+    
+      <div class="flex justify-between mt-3">
+          <div *ngIf="ready" class="mt-2 flex items-center">
+                  <ly-slider
+                  [thumbVisible]="false"
+                  [min]="minScale"
+                  [max]="1"
+                  [(ngModel)]="scale"
+                  class="m-0 h-32"
+                  (input)="onSliderInput($event)"
+                  [step]="0.000001"></ly-slider>
+          </div>
+  
+  
+          <button *ngIf="ready" class="btn btn-primary space-x-2" (click)="cropper.crop()">
+          <i-tabler name="crop"></i-tabler> crop
+          </button>
+      </div>
+    
+    
+      <div class="">
+          <input #_fileInput type="file" (change)="cropper.selectInputEvent($event)" accept="image/*" hidden>
+          <button class="btn btn-block btn-primary " *ngIf="croppedImage" (click)="uploadImage()">Upload</button>
+          <button class="btn btn-block btn-primary " *ngIf="croppedImage" (click)="reset()" >Reset</button>
+      </div>
+  
+</div>

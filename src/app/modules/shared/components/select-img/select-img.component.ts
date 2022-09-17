@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Output, EventEmitter, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-select-img',
@@ -7,8 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SelectImgComponent implements OnInit {
 
+  defaultSrc = 'https://placeimg.com/192/192/people'
   @Input('src') src: string = ""
-  @Input('name') name: string = ""
+  @Input('name') name!: string
+
+  @Output('change') change = new EventEmitter()
+
+  @ViewChild('fileInput') input!: ElementRef<HTMLInputElement>
 
   constructor() { }
 
@@ -18,8 +23,13 @@ export class SelectImgComponent implements OnInit {
   updateSrc(e: any){
     const file = e.target.files[0]
     const blob = URL.createObjectURL(file)
-    console.log(blob)
     this.src = blob
+    this.change.emit(e)
+  }
+
+  removeImg(e: any){
+    this.input.nativeElement.value = ""
+    this.src = ""
   }
 
 }

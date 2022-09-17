@@ -1,0 +1,10 @@
+<div class="avatar mx-auto" *ngIf="src">
+    <div class="rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" [ngClass]="className">
+    <img [src]="src" />
+    </div>
+</div>
+<div class="avatar placeholder" *ngIf="!src && alt">
+    <div class="bg-neutral-focus text-neutral-content rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" [ngClass]="className">
+      <span class="text-3xl">{{alt.charAt(0).toUpperCase()}}</span>
+    </div>
+</div>

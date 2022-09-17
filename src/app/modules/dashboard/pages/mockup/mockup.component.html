@@ -4,16 +4,10 @@
         <div class="artboard overflow-y-scroll artboard-demo phone-1 bg-slate-500 pt-14 px-5 scrollbar justify-between items-center">
 
             <div class="space-y-2 w-full text-center">
-                <div class="avatar mx-auto" *ngIf="page?.image">
-                    <div class="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src="{{page?.image}}" />
-                    </div>
+                <div class="w-auto mx-auto">
+                    <app-avatar [src]="page?.logo" [alt]="page?.title" ></app-avatar>
                 </div>
-                <div class="avatar placeholder mx-auto" *ngIf="!page?.image">
-                    <div class="bg-neutral-focus text-neutral-content rounded-full w-20 ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <span class="text-3xl">{{page?.title.charAt(0).toUpperCase()}}</span>
-                    </div>
-                </div>
+
 
                 <div class="text-white text-center">
                     <h4 class="font-semibold">{{page?.title}}</h4>
@@ -26,8 +20,8 @@
                 <div *ngFor="let link of page?.links">
                     <div class="flex items-center space-x-2" *ngIf="link?.status === 'published'">
                         <a href="{{link?.url}}"  class="btn btn-primary normal-case relative btn-block flex-1" target="_blank">
-                            <i *ngIf="link.thumbnail === 'icon'" class="ti ti-{{link.icon}} absolute my-2 left-3 text-2xl" ></i>
-                            <img *ngIf="link.thumbnail === 'image'" class="absolute top-3 left-3" [src]="link.icon" alt="">
+                            <i *ngIf="link.thumbnail === 'icon'" class="ti ti-{{link.icon}} absolute my-2 left-4 text-2xl" ></i>
+                            <img *ngIf="link.thumbnail === 'image'" class="w-8 h-8 rounded-full absolute left-3 my-2" [src]="link.icon" alt="">
                             {{link?.title}}
                         </a>
                         

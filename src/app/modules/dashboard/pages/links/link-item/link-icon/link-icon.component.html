@@ -4,10 +4,7 @@
         <p class="text-sm">Select an Icon or Logo for this Link</p>
 
         <div class="w-full grid grid-cols-2 gap-4">
-            <button class="btn btn-outline gap-2">
-                <i-tabler name="photo" ></i-tabler>
-                Select Image
-            </button>
+            <app-link-img [link]="link" class="w-full"></app-link-img>
 
             <app-icon-picker (selected)="updateIcon($event)" class="w-full"></app-icon-picker>
         </div>

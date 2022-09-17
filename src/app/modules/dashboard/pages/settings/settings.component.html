@@ -13,12 +13,13 @@
         
                 <div class="card bg-white">
                     <form [formGroup]="infoForm" (submit)="updatePage()" class="card-body">
-                        <app-select-img></app-select-img>
+                        <app-select-img name="logo" [src]="page?.logo" (change)="updateImg($event)" ></app-select-img>
     
                         <div class="form-control w-full">
                             <label class="label"><span class="label-text">Page Title</span></label>
                             <input type="text" formControlName="title" placeholder="Title" class="input input-bordered w-full" />
-                            <app-error [control]="infoForm.get('title')" ></app-error>
+                            <app-error [submitted]="submitted" [control]="infoForm.get('title')" ></app-error>
+                            <small class="text-red-600">{{httpErrors?.title}}</small>
                         </div>
                         
                         <div class="form-control w-full">
@@ -26,20 +27,21 @@
                             <div class="flex items-center input input-bordered border px-0 border-gray-200">
                                 <div class="inline border-0 pl-3 py-2 text-gray-600">http://localhost:4200/</div>
                                 <input type="text" formControlName="slug" placeholder="(ex. https://goolge.com)" class="bg-transparent flex-1 border-transparent py-1 text-gray-600 px-0 focus:outline-none"/>
-                                <app-error [control]="infoForm.get('slug')" ></app-error>
-                                
+                                <app-error [submitted]="submitted" [control]="infoForm.get('slug')" ></app-error>
                             </div>
+                            <small class="text-red-600">{{httpErrors?.slug}}</small>
                         </div>
                         
                         <div class="form-control w-full">
                             <label class="label"><span class="label-text">Page Description</span></label>
                             <textarea formControlName="desc" class="textarea textarea-bordered w-full resize-none" placeholder="Description"></textarea>
-                            <app-error [control]="infoForm.get('desc')" ></app-error>
+                            <app-error [submitted]="submitted" [control]="infoForm.get('desc')" ></app-error>
+                            <small class="text-red-600">{{httpErrors?.desc}}</small>
                         </div>
 
                         <div class="card-actions">
                             <div class="flex justify-end">
-                                <button class="btn btn-primary">Update</button>
+                                <button class="btn btn-primary" [ngClass]="loading ? 'loading' : ''">Update</button>
                             </div>
                         </div>
                     </form>
@@ -77,7 +79,6 @@
         
                 <div class="card bg-white">
                     <div class="card-body space-y-3">
-                        
                     </div>
                 </div>
             </div>

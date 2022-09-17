@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/services/auth/auth.service';
 
@@ -18,28 +18,24 @@ export class HttpResponseInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request)
     .pipe(
-			tap(
-				event => {},
-				error => {
-					if (error instanceof HttpErrorResponse) {
+			catchError((error: HttpErrorResponse) => {
 						let data = error.error
 						switch (error.status) {
-							case 422:
-								// this._toasterService.error(data.message, "", {closeButton: true})
-								break;
+							case 0:
+								console.log(error.error)
+								return throwError(() => new Error('Something bad happened; please try again later.'));
 							case 500:
 								// this._toasterService.error(data.message, "", {closeButton: true})
-								break;
+								return throwError(() => new Error('Something bad happened; please try again later.'));
 							case 401:
 								this._auth.logout()
 								this._router.navigateByUrl('/login')
-								break;
+								return throwError(() => new Error('Something bad happened; please try again later.'));
 						default:
 							// this._toasterService.error("Something unexpected happened", "Unknown Error");
-							break;
+							return throwError(() => error);
 						}
 					}
-				}
 			)
 		);
   }

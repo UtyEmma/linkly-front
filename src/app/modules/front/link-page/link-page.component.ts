@@ -20,14 +20,16 @@ export class LinkPageComponent implements OnInit {
   constructor(
     private _http: HttpClient,
     private _route: ActivatedRoute,
-    private deviceService:  DeviceDetectorService
+    private deviceService:  DeviceDetectorService,
   ) { }
 
   ngOnInit(): void {
     this._route.params.subscribe((param: any) => this.slug = param.slug);
     this.session_id = _cookies.get(this.session_key)
     this._http.post(`page/${this.slug}`, {
-      session: this.session_id
+      session: this.session_id,
+      device: this.getDevice(),
+      referrer: document.referrer
     }).subscribe(
       (res: any) => {
         this.page = res.data?.page
@@ -46,11 +48,13 @@ export class LinkPageComponent implements OnInit {
   }
 
   getDevice(){
+    /**
+     * desktop
+     * mobile
+     * tablet
+     */
     this.deviceInfo = this.deviceService.getDeviceInfo();
-    if(this.deviceService.isMobile()) return 'mobile'
-    if(this.deviceService.isTablet()) return 'tablet'
-    if(this.deviceService.isDesktop()) return 'pc'
-    return 'unknown'
+    return this.deviceInfo.deviceType
   }
 
   

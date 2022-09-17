@@ -1,6 +1,7 @@
 import { Element } from '@angular/compiler';
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import * as TablerIcons from 'angular-tabler-icons/icons';
+import { debounce } from 'src/library/optimization';
 import { Icons } from './icon-tags';
 
 type IconType = Record<string, {
@@ -17,10 +18,10 @@ const IconsSource : IconType = Icons
   templateUrl: './icon-picker.component.html',
   styleUrls: ['./icon-picker.component.scss']
 })
-export class IconPickerComponent implements OnInit {
+export class IconPickerComponent implements OnInit{
 
   @Input('name') name: string = ""
-  icons!: IconType
+  icons!: any[]
   loading: boolean = false
 
   @Output() selected : EventEmitter<any> = new EventEmitter()
@@ -30,30 +31,37 @@ export class IconPickerComponent implements OnInit {
 
   iconInput: any
 
+  @ViewChild('scroll') scroll!: ElementRef<any>
+
   constructor() { }
 
   ngOnInit(): void {
-    this.icons = IconsSource
+    this.icons = Object.entries(IconsSource)
   }
 
   searchIcons(e: any){
+    debounce(this.handleSearch(e), 2000)
+  }
+
+  handleSearch(e: any) : any{
     this.loading = true
     const keyword = e.target.value.toUpperCase()
-    if(!keyword) this.icons = IconsSource
-
+    if(!keyword) this.icons = Object.entries(IconsSource)
+    const icons: any = {}
     for (const key in IconsSource) {
       if (Object.prototype.hasOwnProperty.call(IconsSource, key)) {
         const icon = IconsSource[key]
         const tags = icon.tags
         
         tags.map((tag) : void => {
-          if(this.search(tag.toUpperCase(), keyword)) this.icons[key] = IconsSource[key]
+          if(this.search(tag.toUpperCase(), keyword)) icons[key] = IconsSource[key]
         })
         
-        if(this.search(icon.category.toUpperCase(), keyword)) this.icons[key] = IconsSource[key]
+        if(this.search(icon.category.toUpperCase(), keyword)) icons[key] = IconsSource[key]
       }
     }
 
+    this.icons = Object.entries(icons)
     this.loading = false
   }
 

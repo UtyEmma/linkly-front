@@ -1,6 +1,6 @@
-<small class="uk-text-danger">
+<small class="text-red-600">
 	{{
-		control?.touched && control?.invalid
+		(control?.touched || submitted) && control?.invalid
 
 		?
 

@@ -1,13 +1,13 @@
 <section class="min-h-screen">
     <div class="flex min-h-screen overflow-hidden">
-        <div class="relative w-3/5 hidden overflow-hidden lg:block">
+        <div class="relative w-3/6 hidden overflow-hidden lg:block">
             <img class="absolute inset-0 object-cover w-full h-full bg-black" src="/assets/images/placeholders/rectangleWide.png" alt="">
         </div>
-        <div class="flex flex-col justify-center flex-1 px-4 py-12 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-24 lg:w-2/5">
+        <div class="flex flex-col justify-center flex-1 px-4 py-12 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-24 lg:w-2/5 mx-auto">
             <div class="w-full max-w-xl mx-auto">
                 <div>
-                    <a href="./index.html" class="text-blue-600 text-medium">Linkly</a>
-                    <h2 class="mt-6 text-3xl font-extrabold text-neutral-600">Get Started Here.</h2>
+                    <a href="/"  class="text-blue-600 text-medium">Linkly</a>
+                    <h2 class="mt-6 text-3xl font-bold text-neutral-600">Get Started Here.</h2>
                     <div class="text-sm">
                         Already have an account? 
                         <a routerLink="/login" class="font-medium text-blue-600 hover:text-blue-500">Login</a>
@@ -20,16 +20,18 @@
                             <div>
                                 <label for="email" class="block text-sm font-medium text-neutral-600"> Name </label>
                                 <div class="mt-1">
-                                    <input name="name" type="text" autocomplete="name" required="" formControlName="name" placeholder="Your Name" class="input input-bordered w-full">
-                                    <app-error [control]="registerForm.get('name')" name="Name"></app-error>
+                                    <input name="name" type="text" autocomplete="name" formControlName="name" placeholder="Your Name" class="input input-bordered w-full">
+                                    <app-error [submitted]="submitted"  [control]="registerForm.get('name')" name="Name"></app-error>
+                                    <small class="text-red-600" >{{httpErrors?.name}}</small>
                                 </div>
                             </div>
                             
                             <div>
                                 <label for="email" class="block text-sm font-medium text-neutral-600"> Email address </label>
                                 <div class="mt-1">
-                                    <input id="email" name="email" type="email" autocomplete="email" formControlName="email" required="" placeholder="Your Email" class="input input-bordered w-full">
-                                    <app-error [control]="registerForm.get('email')" name="Email address" ></app-error>
+                                    <input id="email" name="email" type="email" autocomplete="email" formControlName="email" placeholder="Your Email" class="input input-bordered w-full">
+                                    <app-error [submitted]="submitted" [control]="registerForm.get('email')" name="Email address" ></app-error>
+                                    <small class="text-red-600" >{{httpErrors?.email}}</small>
                                 </div>
                             </div>
                             
@@ -37,14 +39,17 @@
                                 <div class="space-y-1">
                                     <label for="password" class="block text-sm font-medium text-neutral-600"> Password </label>
                                     <div class="mt-1">
-                                        <input id="password" name="password" type="password" formControlName="password" autocomplete="current-password" required="" placeholder="Your Password" class="input w-full input-bordered">
-                                        <app-error [control]="registerForm.get('password')" name="Password" ></app-error>
+                                        <input id="password" name="password" type="password" formControlName="password" autocomplete="current-password" placeholder="Your Password" class="input w-full input-bordered">
+                                        <app-error [submitted]="submitted" [control]="registerForm.get('password')" name="Password" ></app-error>
+                                        <small class="text-red-600" >{{httpErrors?.password}}</small>
                                     </div>
                                 </div>
                                 <div class="space-y-1">
                                     <label for="password" class="block text-sm font-medium text-neutral-600"> Confirm Password </label>
                                     <div class="mt-1">
-                                        <input id="password-confirmation" name="password_confirmation" formControlName="password" type="password" autocomplete="current-password" required="" name="Password Confirmation" placeholder="Your Password" class="input w-full input-bordered">
+                                        <input id="password-confirmation" name="password_confirmation" formControlName="password_confirmation" type="password" autocomplete="current-password" name="Password Confirmation" placeholder="Your Password" class="input w-full input-bordered">
+                                        <app-error [submitted]="submitted" [control]="registerForm.get('password_confirmation')" name="Password Confirmation" ></app-error>
+                                        <small class="text-red-600" >{{httpErrors?.password_confirmation}}</small>
                                     </div>
                                 </div>
                             </div>
