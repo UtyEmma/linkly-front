@@ -26,6 +26,10 @@ import { AppearanceComponent } from './appearance/appearance.component';
 import { LinkImgComponent } from './links/link-item/link-icon/link-img/link-img.component';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {NgxPhotoEditorModule} from "ngx-photo-editor";
+import { ProfileComponent } from './settings/profile/profile.component';
+import { SeoComponent } from './settings/seo/seo.component';
+import { SocialComponent } from './settings/social/social.component';
+import { DevicesChartComponent } from './analytics/devices-chart/devices-chart.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,10 @@ import {NgxPhotoEditorModule} from "ngx-photo-editor";
     BackgroundComponent,
     AppearanceComponent,
     LinkImgComponent,
+    ProfileComponent,
+    SeoComponent,
+    SocialComponent,
+    DevicesChartComponent,
     
   ],
   imports: [

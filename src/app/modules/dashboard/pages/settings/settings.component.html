@@ -1,87 +1,12 @@
-<app-pages>
-    <div class="space-y-3 ">
-        <div class="h-14 border-b flex items-center sticky top-0 bg-white px-7 z-50">
-            <h3 class="text-xl">Settings</h3>
-        </div>
-        
+<app-pages title="Settings">
+    <div class="space-y-3">       
         <div class="md:w-9/12 w-full px-4 mx-auto py-3">
 
-            <div>
-                <div class="py-2">
-                    <h3 class="text-lg font-semibold">Profile</h3>
-                </div>
-        
-                <div class="card bg-white">
-                    <form [formGroup]="infoForm" (submit)="updatePage()" class="card-body">
-                        <app-select-img name="logo" [src]="page?.logo" (change)="updateImg($event)" ></app-select-img>
+            <app-profile [page]="page"></app-profile>
     
-                        <div class="form-control w-full">
-                            <label class="label"><span class="label-text">Page Title</span></label>
-                            <input type="text" formControlName="title" placeholder="Title" class="input input-bordered w-full" />
-                            <app-error [submitted]="submitted" [control]="infoForm.get('title')" ></app-error>
-                            <small class="text-red-600">{{httpErrors?.title}}</small>
-                        </div>
-                        
-                        <div class="form-control w-full">
-                            <label class="label"><span class="label-text">Page URL</span></label>
-                            <div class="flex items-center input input-bordered border px-0 border-gray-200">
-                                <div class="inline border-0 pl-3 py-2 text-gray-600">http://localhost:4200/</div>
-                                <input type="text" formControlName="slug" placeholder="(ex. https://goolge.com)" class="bg-transparent flex-1 border-transparent py-1 text-gray-600 px-0 focus:outline-none"/>
-                                <app-error [submitted]="submitted" [control]="infoForm.get('slug')" ></app-error>
-                            </div>
-                            <small class="text-red-600">{{httpErrors?.slug}}</small>
-                        </div>
-                        
-                        <div class="form-control w-full">
-                            <label class="label"><span class="label-text">Page Description</span></label>
-                            <textarea formControlName="desc" class="textarea textarea-bordered w-full resize-none" placeholder="Description"></textarea>
-                            <app-error [submitted]="submitted" [control]="infoForm.get('desc')" ></app-error>
-                            <small class="text-red-600">{{httpErrors?.desc}}</small>
-                        </div>
+            <app-seo [page]="page"></app-seo>
 
-                        <div class="card-actions">
-                            <div class="flex justify-end">
-                                <button class="btn btn-primary" [ngClass]="loading ? 'loading' : ''">Update</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-    
-            <div class="mt-4">
-                <div class="py-2">
-                    <h3 class="text-lg font-semibold">SEO</h3>
-                </div>
-        
-                <div class="card bg-white">
-                    <div class="card-body space-y-3">
-                        <form action="">
-                            <div class="form-control w-full">
-                                <label class="label"><span class="label-text">Meta Title</span></label>
-                                <input type="text" placeholder="Title" class="input input-bordered w-full" />
-                                <!-- <app-error [control]="infoForm.get('title')" ></app-error> -->
-                            </div>
-
-                            <div class="form-control w-full">
-                                <label class="label"><span class="label-text">Meta Description</span></label>
-                                <textarea class="textarea textarea-bordered w-full resize-none" placeholder="Description"></textarea>
-                                <!-- <app-error [control]="infoForm.get('desc')" ></app-error> -->
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-4">
-                <div class="py-2">
-                    <h3 class="text-lg font-semibold">Social Icons</h3>
-                </div>
-        
-                <div class="card bg-white">
-                    <div class="card-body space-y-3">
-                    </div>
-                </div>
-            </div>
+            <!-- <app-social></app-social> -->
         </div>
     </div>
 

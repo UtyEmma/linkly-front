@@ -14,6 +14,7 @@ import { FrontModule } from './modules/front/front.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoverPasswordComponent } from './modules/auth/recover-password/recover-password.component';
 import { ResetPasswordComponent } from './modules/auth/reset-password/reset-password.component';
+import { AppService } from './providers/services/app/app.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ResetPasswordComponent } from './modules/auth/reset-password/reset-pass
   ],
   providers: [
     INTERCEPTORS,
-    UserService
+    UserService,
+    AppService
   ],
   bootstrap: [AppComponent]
 })

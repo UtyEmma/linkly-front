@@ -6,14 +6,15 @@ import { catchError, throwError } from 'rxjs'
 import { HttpErrorService } from 'src/app/providers/services/http/errors/http-error.service';
 import { UserService } from 'src/app/providers/services/user/user.service';
 
-@Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss']
-})
-export class WelcomeComponent implements OnInit {
 
-	newPageForm!: FormGroup
+@Component({
+  selector: 'app-new-page',
+  templateUrl: './new-page.component.html',
+  styleUrls: ['./new-page.component.scss']
+})
+export class NewPageComponent implements OnInit {
+
+  newPageForm!: FormGroup
 	submitted: boolean = false
 	loading = false
 	httpErrors: any = {}
@@ -24,7 +25,7 @@ export class WelcomeComponent implements OnInit {
 		private _http: HttpClient,
 		private _router: Router,
 		private _err: HttpErrorService,
-		private _userService: UserService
+    private _userService: UserService
 	) { }
 
 	ngOnInit(): void {
@@ -45,13 +46,15 @@ export class WelcomeComponent implements OnInit {
 				)
 				.subscribe((res: any) => {
 					const url = res?.data.page.slug
-					this._userService.current.subscribe((user) => {
-						this._userService.set({
-						  ...user,
-						  pages: res.data.pages
-						})
-					})
-					return this._router.navigateByUrl(`/${url}`, {
+          
+          this._userService.current.subscribe((user) => {
+            this._userService.set({
+              ...user,
+              pages: res.data.pages
+            })
+          })
+					
+          return this._router.navigateByUrl(`/${url}`, {
 						state: {
 							page: res?.data.page
 						}

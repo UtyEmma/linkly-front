@@ -1,8 +1,4 @@
-<app-pages>
-    <div class="h-14 border-b bg-white px-7 flex items-center sticky top-0 z-50">
-        <h3 class="text-xl font-semibold">Analytics</h3>
-    </div>
-
+<app-pages title="Analytics">
     <div class="w-full">
         <div class="w-9/12 mx-auto py-10 space-y-4">
             <div class="card bg-white">
@@ -38,7 +34,7 @@
                         <div class="text-center px-1 py-3">
                             <div>
                                 <p class="text-sm text-gray-500">CTR</p>
-                                <p class="text-xl font-medium text-gray-900">{{page.visits_count && (page.visits_count / 100) * page.clicks_count | percent}}</p>
+                                <p class="text-xl font-medium text-gray-900">{{page.visits_count && (page.clicks_count * 100) / page.visits_count | percent}}</p>
                             </div>                            
                         </div>
                     </div>
@@ -68,13 +64,13 @@
 
             <div class="card bg-white  ">
                 <div class="card-body flex space-x-5">
-                    <app-activity-chart></app-activity-chart>
+                    <app-activity-chart [stats]="activity" *ngIf="show"></app-activity-chart>
                 </div>
             </div>
             
             <div class="card bg-white">
                 <div class="card-body">
-
+                    <app-devices-chart [stats]="devices" *ngIf="show" ></app-devices-chart>
                 </div>
             </div>
         </div>

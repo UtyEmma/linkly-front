@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, RouterState } from '@angular/router';
 import { PageService } from 'src/app/providers/services/pages/page.service';
 import Str from 'src/library/Str';
@@ -14,6 +14,7 @@ export class PagesComponent implements OnInit {
   slug: any
   page: any
   state : any
+  @Input('title') title: string = ""
 
   
 

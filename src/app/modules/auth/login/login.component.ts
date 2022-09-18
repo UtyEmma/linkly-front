@@ -30,18 +30,21 @@ export class LoginComponent implements OnInit {
 	ngOnInit(): void {
 		this.loginForm = this._fb.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])],
-			password: ['', Validators.compose([Validators.required])]
+			password: ['', Validators.compose([Validators.required])],
+			remember: ['']
 		})
 	}
 
   	login () {
 		this.loading = true
+		// console.log(this.loginForm.value)
 		this._http.post('login', this.loginForm.value)
 					.pipe(catchError((error: HttpErrorResponse) => this.onError(error)))
 					.subscribe(
 						(res: any) => {
 							this.loading = false
 							if(res.data.token) this._auth.login(res.data.token, res.data.user)
+							if(res.data.remember_token) this._auth.setRememberToken(res.data.remember_token)
 							return this._router.navigateByUrl('/')
 						}
 					)

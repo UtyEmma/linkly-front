@@ -1,4 +1,4 @@
-import Cookies from 'universal-cookie';
+import Cookies, { CookieSetOptions } from 'universal-cookie';
 
 class Cookie {
 
@@ -12,8 +12,8 @@ class Cookie {
         return this.cookies.get(name)
     }
 
-    set(name: string, value: any){
-        return this.cookies.set(name, value)
+    set(name: string, value: any, options?: CookieSetOptions){
+        return this.cookies.set(name, value, options)
     }
 
     remove(name: string){

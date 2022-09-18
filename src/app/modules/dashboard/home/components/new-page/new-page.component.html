@@ -1,0 +1,38 @@
+<label for="new-page-modal" class="btn btn-primary btn-wide gap-2">
+    Create a New Page
+    <i-tabler name="plus"></i-tabler>
+</label>
+
+<input type="checkbox" id="new-page-modal" class="modal-toggle" />
+<label for="new-page-modal" class="modal cursor-pointer">
+  <label class="modal-box text-left relative space-y-10" for="">
+    <div class="">
+        <h3 class="text-lg font-bold">Create a New Page</h3>
+    </div>
+    <div class=" space-y-3">
+        <form [formGroup]="newPageForm" (ngSubmit)="createPage()" class="space-y-2">
+            <div>
+                <input formControlName="title" type="text" required class="input input-bordered w-full" placeholder="Page Title">
+                <app-error [submitted]="submitted" [control]="newPageForm.get('title')" name="Page Title"></app-error>
+            </div>
+    
+            <div>
+                <div class="flex input input-bordered items-center text-sm px-4 py-0">
+                    <div class="inline px-0 pr-1 text-gray-600">http://localhost:4200/</div>
+                    <input formControlName="slug" type="text" placeholder="slug" class="placeholder:text-sm bg-transparent flex-1 border-0 text-gray-600 px-0 focus:border-0 focus:outline-0 outline-0" />
+                </div>
+                <app-error [submitted]="submitted" [control]="newPageForm.get('slug')" name="Slug"></app-error>
+            </div>
+    
+            <div>
+                <textarea formControlName="desc" class="textarea textarea-bordered resize-none w-full" placeholder="Page Description" id=""></textarea>
+                <app-error [submitted]="submitted" [control]="newPageForm.get('desc')" name="Description"></app-error>
+            </div>
+    
+            <div>
+                <button class="btn btn-primary w-full" [ngClass]="loading ? 'loading': ''" type="submit">Create Page</button>    
+            </div>
+        </form>
+    </div>
+  </label>
+</label>

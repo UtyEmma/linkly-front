@@ -10,7 +10,8 @@ import { MainComponent } from './home/components/main/main.component';
 import { UserService } from 'src/app/providers/services/user/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import {SharedModule as Shared} from '../shared/shared.module';
-import { PageItemComponent } from './home/components/page-item/page-item.component'
+import { PageItemComponent } from './home/components/page-item/page-item.component';
+import { NewPageComponent } from './home/components/new-page/new-page.component'
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { PageItemComponent } from './home/components/page-item/page-item.compone
     WelcomeComponent,
     MainComponent,
     PageItemComponent,
+    NewPageComponent,
   ],
   imports: [
     CommonModule,

@@ -21,7 +21,7 @@
                             <div>
                                 <label for="email" class="block text-sm font-medium text-neutral-600"> Email address </label>
                                 <div class="mt-1">
-                                    <input id="email" name="email" type="email" autocomplete="email" formControlName="email" required="" placeholder="Your Email" class="input input-bordered w-full">
+                                    <input id="email" name="email" type="email" autocomplete="email" formControlName="email" [required]="true" placeholder="Your Email" class="input input-bordered w-full">
                                     <app-error [control]="loginForm.get('email')" name="Email address" ></app-error>
                                 </div>
                             </div>
@@ -29,14 +29,14 @@
                             <div class="space-y-1">
                                 <label for="password" class="block text-sm font-medium text-neutral-600"> Password </label>
                                 <div class="mt-1">
-                                    <input id="password" name="password" type="password" formControlName="password" autocomplete="current-password" required="" placeholder="Your Password" class="input w-full input-bordered">
+                                    <input id="password" name="password" type="password" formControlName="password" autocomplete="current-password" [required]="true" placeholder="Your Password" class="input w-full input-bordered">
                                     <app-error [control]="loginForm.get('password')" name="Password" ></app-error>
                                 </div>
                             </div>
 
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
-                                    <input id="remember-me" name="remember-me" type="checkbox" placeholder="Your password" class="w-4 h-4 text-blue-600 border-gray-200 rounded focus:ring-blue-500">
+                                    <input id="remember-me" name="remember-me" type="checkbox" formControlName="remember" placeholder="Your password" class="w-4 h-4 text-blue-600 border-gray-200 rounded focus:ring-blue-500">
                                     <label for="remember-me" class="block ml-2 text-sm text-neutral-600"> Remember me </label>
                                 </div>
 

@@ -1,0 +1,37 @@
+<div class="mt-4 space-y-2">
+    <div>
+        <h3 class="text-lg font-semibold space-x-2 flex items-center">SEO</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente, error.</p>
+    </div>
+
+
+    <div class="card bg-white">
+        <div class="card-body space-y-3">
+            <form [formGroup]="seoForm" (submit)="updateSEO()" >
+                <div class="form-control w-full">
+                    <label class="label"><span class="label-text">Meta Title</span></label>
+                    <input type="text" formControlName="meta_title" placeholder="Meta Title" class="input input-bordered w-full" />
+                    <app-error [control]="seoForm.get('meta_title')" ></app-error>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label"><span class="label-text">Meta Description</span></label>
+                    <textarea formControlName="meta_desc" class="textarea textarea-bordered w-full resize-none" placeholder="Description"></textarea>
+                    <app-error [control]="seoForm.get('meta_desc')" ></app-error>
+                </div>
+
+                <div class="form-control w-full">
+                    <label class="label"><span class="label-text">Meta Tags</span></label>
+                    <input type="text" formControlName="meta_tags" placeholder="Seperate Meta Tags with a Comma" class="input input-bordered w-full" />
+                    <app-error [control]="seoForm.get('meta_tags')" ></app-error>
+                </div>
+
+                <div class="card-actions mt-3">
+                    <div class="float-left w-full">
+                        <button class="btn btn-primary float-right" [ngClass]="loading ? 'loading' : ''">Update and Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

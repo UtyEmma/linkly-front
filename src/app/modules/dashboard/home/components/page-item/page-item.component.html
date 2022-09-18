@@ -1,7 +1,7 @@
-<div class="card bg-white hover:shadow-lg transition-shadow cursor-pointer">    
+<div class="card bg-white hover:shadow-lg border h-full transition-shadow cursor-pointer">    
     <div class="card-body flex w-full">
         <div class="w-1/4">
-
+            <app-avatar [src]="page?.logo" [alt]="page?.title"></app-avatar>
         </div>
         <div class="flex-1">
             <div>
@@ -10,12 +10,13 @@
             </div>      
     
             <div class="flex items-center justify-between w-full space-x-2 mt-2">
-                <p class="flex items-center">
-                    <i-feather name="eye" style="width: 14px; height: 14px;" ></i-feather>
+                <p class="flex items-center space-x-2">
+                    <i-feather name="eye" style="width: 16px; height: 16px;" ></i-feather>
                     <span class="ml-1 text-sm font-medium">{{page?.visits.length}} Views</span>
                 </p>
 
-                <a href="http://localhost:4200/{{page.slug}}" target="_blank" class="btn btn-sm btn-square btn-ghost">
+                <a href="http://localhost:4200/{{page.slug}}" target="_blank" class="btn btn-sm btn-ghost space-x-3">
+                    <span>View Page</span>
                     <i-feather name="feather" style="width: 16px; height: 16px;" ></i-feather>
                 </a>
             </div>

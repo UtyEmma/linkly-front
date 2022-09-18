@@ -22,6 +22,7 @@ import { MinimaLight, MinimaDark } from '@alyle/ui/themes/minima';
 import { ModalComponent } from './components/modal/modal/modal.component';
 import {DialogModule} from '@angular/cdk/dialog';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { TagsInputComponent } from './components/tags-input/tags-input.component';
 
 const Icons : any = FeatherIcons
 @NgModule({
@@ -34,7 +35,8 @@ const Icons : any = FeatherIcons
     SafePipe,
     ImgResizeComponent,
     ModalComponent,
-    AvatarComponent
+    AvatarComponent,
+    TagsInputComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ const Icons : any = FeatherIcons
     SafePipe,
     ImgResizeComponent,
     ModalComponent,
-    AvatarComponent
+    AvatarComponent,
+    TagsInputComponent
   ],
   providers: [
     [ LyTheme2 ],

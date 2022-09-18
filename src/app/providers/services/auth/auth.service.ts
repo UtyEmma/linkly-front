@@ -12,6 +12,7 @@ import { UserService } from '../user/user.service';
 export class AuthService {
 
   key = 'LINKLYUSR'
+  rememberTokenKey = "remtok_id"
   cookie
 
   constructor(private _user: UserService) { 
@@ -21,6 +22,18 @@ export class AuthService {
   login(token: string, user: any){
     this._user.set(user)
     return _cookies.set(this.key, token)
+  }
+
+  setRememberToken(token: string){
+    const date = new Date()
+    _cookies.set(this.rememberTokenKey, token, {
+      expires: date,
+      maxAge: 100
+    })
+  }
+
+  getRememberToken(){
+    return _cookies.get(this.rememberTokenKey)
   }
 
   status(){
@@ -33,6 +46,10 @@ export class AuthService {
 
   async refresh(){
     await this._user.refresh()
+  }
+
+  rememberUser(token = ""){
+    return this._user.remember(token)
   }
 
   async user(){

@@ -3,6 +3,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { PageService } from 'src/app/providers/services/pages/page.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { Title } from '@angular/platform-browser';
 
 export type LinkItemType = {
   title: string,
@@ -34,12 +35,14 @@ export class LinksComponent implements OnInit, OnChanges {
   constructor(
     private _pageService: PageService,
     private _http: HttpClient,
+    private _title: Title
   ) { }
 
   ngOnInit(): void {
     this._pageService.current.subscribe(page => {
       this.page = page
       if(page){
+        this._title.setTitle(`${page.title} - Link`)
         this.links = page?.links || []
         if(page?.links.length < 1) this.addLink()
       }

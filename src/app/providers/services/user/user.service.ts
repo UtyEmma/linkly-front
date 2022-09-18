@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import Cookies from 'universal-cookie';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class UserService {
 
   cookie
 
-  constructor(private _http: HttpClient) { 
+  constructor(
+    private _http: HttpClient
+    ) { 
     this.cookie = new Cookies()
   }
 
@@ -29,6 +32,14 @@ export class UserService {
   async refresh(){    
     return this._http.get('user').subscribe((res: any) => {
       this.set(res.data.user)
+    })
+  }
+  
+  remember(token: string){
+    return this._http.get('user/remember', {
+      params: {
+        token: token
+      }
     })
   }
 

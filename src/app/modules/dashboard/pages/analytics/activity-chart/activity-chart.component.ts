@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
@@ -7,6 +6,8 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { PageService } from 'src/app/providers/services/pages/page.service';
 
 type ILabels = 'Jan' | 'Feb' | 'Mar' | 'Apr' | 'May' | 'Jun' | 'Jul' | 'Aug' | 'Sep' | 'Oct' | 'Nov' | 'Dec'
+
+type ChartDataType = Record<string, any[]>
 
 @Component({
   selector: 'app-activity-chart',
@@ -18,18 +19,13 @@ export class ActivityChartComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   show: boolean = false
-  stats : any = {
-    clicks: [],
-    visits: [],
-    views: [],
-  }
-
-  page!: any
+  @Input('stats') stats!: any
+  
   labels: ILabels[] = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
-
+  public barChartData!: ChartData<'bar' | 'line'>
+  
   constructor(
-    private _http: HttpClient,
-    private _page: PageService
+
   ){}
 
   public barChartOptions: ChartConfiguration['options'] = {
@@ -46,6 +42,7 @@ export class ActivityChartComponent implements OnInit {
         display: true,
       },
       datalabels: {
+
         anchor: 'end',
         align: 'end'
       }
@@ -53,24 +50,22 @@ export class ActivityChartComponent implements OnInit {
   };
 
   ngOnInit(){
-    this._page.current.subscribe(page => {
-      this.page = page
-      this.loadStats()
-    })
+    this.barChartData = {
+      labels: this.labels,
+      datasets: [
+        { data: this.stats.visits, label: 'Visits', type: 'bar' },
+        { data: this.stats.views, label: 'Views', type: 'bar' },
+        {data: this.stats.clicks, label: 'Clicks', type: 'line'}
+      ],
+    };
+    console.log(this.stats)
   }
 
-  public barChartType: ChartType = 'bar';
+  // public barChartType: ChartType = 'line';
   public barChartPlugins = [
     DataLabelsPlugin
   ];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: this.labels,
-    datasets: [
-      { data: this.stats.visits, label: 'Visits' },
-      { data: this.stats.views, label: 'Views' },
-    ]
-  };
 
   // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
@@ -79,29 +74,6 @@ export class ActivityChartComponent implements OnInit {
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
     // console.log(event, active);
-  }
-
-  loadStats(){
-    this._http.get(`pages/${this.page.unique_id}/stats`)
-        .subscribe(
-          (res: any) => {
-            const activity : any = res.data.activity
-            activity.map((value: any, index: number) => {
-              this.stats.clicks.push(value.clicks)
-              this.stats.visits.push(value.visits)
-              this.stats.views.push(value.views)
-            })
-            this.show = true
-          }
-        )        
-  }
-
-  parseDatasets(){
-    this.labels.map((value) => {
-      return {
-        
-      }
-    })
   }
 
 }

@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import _cookies from 'src/app/providers/providers/cookies.provider';
 import { PageService } from 'src/app/providers/services/pages/page.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { Title, Meta } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-link-page',
   templateUrl: './link-page.component.html',
@@ -21,6 +23,8 @@ export class LinkPageComponent implements OnInit {
     private _http: HttpClient,
     private _route: ActivatedRoute,
     private deviceService:  DeviceDetectorService,
+    private _title: Title,
+    private _meta: Meta
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +37,14 @@ export class LinkPageComponent implements OnInit {
     }).subscribe(
       (res: any) => {
         this.page = res.data?.page
+
+        this._title.setTitle(this.page.meta_title || this.page.title)
+
+        this._meta.addTags([
+          {name: 'description', content: this.page.meta_desc || this.page.desc},
+          {name: 'keywords', content: this.page.meta_tags || ""}
+        ])
+
         _cookies.set(this.session_key, res.data?.session)
       }
     )

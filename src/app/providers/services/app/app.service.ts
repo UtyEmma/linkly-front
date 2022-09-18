@@ -10,17 +10,22 @@ export class AppService {
   constructor() { }
 
   private readonly _appSource = new BehaviorSubject<any>({
-    user: null
+    page: "Dashboard -"
   })
 
   readonly app = this._appSource.asObservable()
+  readonly current = this._appSource.asObservable()
 
   get(){
     return this._appSource.getValue()
   }
 
-  set(state: any){
-    this._appSource.next(state)
+
+
+  set(callback: (arg: any) => any){
+    const current = this._appSource.getValue()
+    const newState = callback(current)
+    this._appSource.next(newState)
   }
 
   user(){
