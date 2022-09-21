@@ -7,6 +7,7 @@ import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { UserService } from 'src/app/providers/services/user/user.service';
 import { RouterModule } from '@angular/router';
+import {SharedModule as Shared} from '../../shared/shared.module'
 
 @NgModule({
   declarations: [
@@ -17,13 +18,15 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FeatherModule.pick(allIcons),
-    RouterModule
+    RouterModule,
+    Shared
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     FeatherModule,
-    DashboardComponent
+    DashboardComponent,
+    Shared
   ],
 })
 export class SharedModule { }

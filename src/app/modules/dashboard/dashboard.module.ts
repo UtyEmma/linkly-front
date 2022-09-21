@@ -9,9 +9,11 @@ import { WelcomeComponent } from './home/components/welcome/welcome.component';
 import { MainComponent } from './home/components/main/main.component';
 import { UserService } from 'src/app/providers/services/user/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import {SharedModule as Shared} from '../shared/shared.module';
 import { PageItemComponent } from './home/components/page-item/page-item.component';
-import { NewPageComponent } from './home/components/new-page/new-page.component'
+import { NewPageComponent } from './home/components/new-page/new-page.component';
+import { ProfileComponent } from './profile/profile.component';
+import { GeneralComponent } from './profile/general/general.component';
+import { PasswordComponent } from './profile/password/password.component';
 
 
 @NgModule({
@@ -21,14 +23,16 @@ import { NewPageComponent } from './home/components/new-page/new-page.component'
     MainComponent,
     PageItemComponent,
     NewPageComponent,
+    ProfileComponent,
+    GeneralComponent,
+    PasswordComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
     PagesModule,
-    ReactiveFormsModule,
-    Shared
+    ReactiveFormsModule
   ],
 })
 export class DashboardModule { }

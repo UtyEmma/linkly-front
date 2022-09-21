@@ -4,18 +4,16 @@
             <div>
                 <h1 class="text-2xl  sm:text-3xl">Welcome Back, {{user?.name}}</h1>
                 <p class="mt-1.5 text-gray-500">
-                    Let's write a new blog post! 🎉
+                    What do you want to do today? 🎉
                 </p>
             </div>
-        
-            <div class="flex gap-4 sm:flex-row sm:mt-0 items-center">            
-                <app-new-page></app-new-page>
-            </div>
+                    
+            <app-new-page></app-new-page>
         </div>
     </div>
     
-    <div class="space-y-5">    
-        <div class="grid md:grid-cols-3  gap-5">
+    <div class="space-y-5 px-4">    
+        <div *ngIf="user" class="grid md:grid-cols-3  gap-5">
             <app-page-item *ngFor="let page of user.pages" [page]="page" ></app-page-item>
         </div>
     </div>

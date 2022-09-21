@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Input } from '@angular/core';
 import { PageService } from 'src/app/providers/services/pages/page.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { PageService } from 'src/app/providers/services/pages/page.service';
 })
 export class MockupComponent implements OnInit, AfterViewInit {
 
-  page!: any
+  @Input('page') page!: any
 
   constructor(
     private _pageService: PageService
@@ -17,7 +17,7 @@ export class MockupComponent implements OnInit, AfterViewInit {
   ngOnInit(): void { }
 
   ngAfterViewInit(): void {
-    this._pageService.current.subscribe(page => this.page = page)
+    // this._pageService.current.subscribe(page => this.page = page)
   }
 
 

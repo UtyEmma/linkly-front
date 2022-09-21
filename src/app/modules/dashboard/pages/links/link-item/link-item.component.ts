@@ -1,27 +1,39 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { CdkDragHandle } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, ElementRef, Input, OnChanges, OnInit, QueryList, ViewChildren, AfterViewInit, SimpleChanges, ViewChild } from '@angular/core';
 import { PageService } from 'src/app/providers/services/pages/page.service';
-import { LinkItemType } from '../links.component';
 
 type EditableRef = 'title' | 'url' | 'status';
 
 @Component({
   selector: 'app-link-item',
   templateUrl: './link-item.component.html',
-  styleUrls: ['./link-item.component.scss']
+  styleUrls: ['./link-item.component.scss'],
+  animations: [
+    trigger('slideDown', [
+      transition(':enter', [
+        style({ height: 0 }),
+        animate(300, style({height: '*'})),
+      ]),
+      transition(':leave', [
+        animate(300, style({ height: 0}))
+      ])
+    ])
+  ]
 })
 
 
-export class LinkItemComponent implements OnInit, OnChanges  {
+export class LinkItemComponent implements OnInit, OnChanges, AfterViewInit  {
 
-  @ViewChild('linkTitle') linkTitle!: ElementRef
-  @ViewChild('linkUrl') linkUrl!: ElementRef
+  @ViewChild('linkTitle') linkTitle!: ElementRef<HTMLInputElement>
+  @ViewChild('linkUrl') linkUrl!: ElementRef<HTMLInputElement>
 
   @Input() link! : any;
   @Input() dragHandle! : CdkDragHandle;
+
+  @ViewChildren("togglelinkTitle") togglelinkTitle!: QueryList<ElementRef>;
+  @ViewChildren("togglelinkUrl") togglelinkUrl!: QueryList<ElementRef>;
 
   page : any = null 
   title: boolean = true
@@ -43,6 +55,16 @@ export class LinkItemComponent implements OnInit, OnChanges  {
     private _pageService: PageService
   ) { }
 
+  ngAfterViewInit(){
+    this.togglelinkTitle.changes.subscribe(() => {
+      this.linkTitle && this.linkTitle.nativeElement.focus()
+    });
+
+    this.togglelinkUrl.changes.subscribe(() => {
+      this.linkUrl && this.linkUrl.nativeElement.focus()
+    });
+  }
+
   ngOnInit(): void {
     this._pageService.current.subscribe((page) => this.page = page)
   }
@@ -57,7 +79,7 @@ export class LinkItemComponent implements OnInit, OnChanges  {
 
   toggleInput(name: EditableRef, status: boolean, element?: 'linkTitle' | 'linkUrl') {
     this[name] = status
-    if(element && this[element]) console.log(this[element].nativeElement.focus())
+    if(element && this[element]) this[element].nativeElement.focus()
   }
 
   toggleStatus(e: any){    

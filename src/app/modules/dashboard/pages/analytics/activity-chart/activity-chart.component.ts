@@ -58,7 +58,6 @@ export class ActivityChartComponent implements OnInit {
         {data: this.stats.clicks, label: 'Clicks', type: 'line'}
       ],
     };
-    console.log(this.stats)
   }
 
   // public barChartType: ChartType = 'line';

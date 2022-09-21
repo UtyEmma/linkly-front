@@ -2,19 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, RouterState } from '@angular/router';
 import { PageService } from 'src/app/providers/services/pages/page.service';
-import Str from 'src/library/Str';
 
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.scss']
 })
+
 export class PagesComponent implements OnInit {
 
   slug: any
   page: any
   state : any
   @Input('title') title: string = ""
+  @Input('subtitle') subtitle: string = ""
 
   
 
@@ -39,20 +40,6 @@ export class PagesComponent implements OnInit {
     if(this.state?.page) return this._pageService.set(this.state?.page)
     if(!this.page) this._http.get(`pages/${this.slug}`).subscribe((res: any) => this._pageService.set(res.data.page))
   }
-
-  copyLink(link: string){
-    Str.parse(link).copy()
-  }  
-  
-  shareLink(){
-    const link = `http://localhost:4200/${this.page?.slug}`
-    Str.parse(link).share({
-      title: this.page?.title,
-      text: "Share two"
-    })
-  }
-
-
   
 
 }

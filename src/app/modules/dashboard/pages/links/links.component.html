@@ -1,13 +1,16 @@
 <app-pages title="Links">
     <div class="flex flex-col h-full">    
-        <div class="w-full px-2 md:w-9/12 mx-auto h-full">
-            <div class="mt-5 w-full gap-5">
-                <button class="btn btn-primary w-full rounded-full" [ngClass]="loading ? 'loading' : '' " (click)="addLink()" >Add New Link</button>
-                <!-- <button class="btn btn-outline btn-primary rounded-full w-full">Choose a Link</button> -->
+        <div class="w-full px-4 md:w-9/12 mx-auto md:py-5  h-full">
+            <div class="w-full gap-5">
+                <button class="btn btn-primary w-full" [ngClass]="loading ? 'loading' : '' " (click)="addLink()" >Add New Link</button>
             </div>
         
             <div class="flex flex-col w-full my-5 space-y-3" cdkDropList (cdkDropListDropped)="drop($event)">
-                <app-link-item cdkDrag *ngFor="let link of links" [link]="link"></app-link-item>
+                <app-link-item cdkDrag *ngFor="let link of links" [link]="link" >
+                    <button cdkDragHandle class="btn btn-ghost btn-square btn-sm cursor-move" >
+                        <i-tabler name="grip-vertical" class="text-gray-400" ></i-tabler>
+                    </button>
+                </app-link-item>
             </div>
         </div>
     </div>

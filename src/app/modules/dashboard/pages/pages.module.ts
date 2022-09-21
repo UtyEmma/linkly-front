@@ -30,6 +30,10 @@ import { ProfileComponent } from './settings/profile/profile.component';
 import { SeoComponent } from './settings/seo/seo.component';
 import { SocialComponent } from './settings/social/social.component';
 import { DevicesChartComponent } from './analytics/devices-chart/devices-chart.component';
+import { MockupMobileComponent } from './mockup-mobile/mockup-mobile.component';
+import { LocationChartComponent } from './analytics/location-chart/location-chart.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { TopbarComponent } from './layout/topbar/topbar.component'
 
 @NgModule({
   declarations: [
@@ -49,7 +53,10 @@ import { DevicesChartComponent } from './analytics/devices-chart/devices-chart.c
     SeoComponent,
     SocialComponent,
     DevicesChartComponent,
-    
+    MockupMobileComponent,
+    LocationChartComponent,
+    SidebarComponent,
+    TopbarComponent
   ],
   imports: [
     CommonModule,

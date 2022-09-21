@@ -23,6 +23,7 @@ import { ModalComponent } from './components/modal/modal/modal.component';
 import {DialogModule} from '@angular/cdk/dialog';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { TagsInputComponent } from './components/tags-input/tags-input.component';
+import { AutofocusDirective } from './directives/autofocus/autofocus.directive';
 
 const Icons : any = FeatherIcons
 @NgModule({
@@ -36,7 +37,8 @@ const Icons : any = FeatherIcons
     ImgResizeComponent,
     ModalComponent,
     AvatarComponent,
-    TagsInputComponent
+    TagsInputComponent,
+    AutofocusDirective
   ],
   imports: [
     CommonModule,

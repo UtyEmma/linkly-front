@@ -1,0 +1,28 @@
+<div class="flex items-center flex-shrink-0 px-4 h-14">
+    <h2 class="block text-xl font-medium tracking-tighter text-gray-900 transition duration-500 ease-in-out transform cursor-pointer hover:text-gray-900 ">
+        {{page?.title}}
+    </h2>
+</div>
+<div class="flex-1 h-full flex flex-col  px-4 mt-5">
+    <nav class="flex-1 space-y-1 ">
+        <ul class="space-y-2">
+            <li>
+                <a class="normal-case btn btn-ghost rounded-full btn-block justify-start hover:text-white transition-shadow" routerLinkActive="btn-active text-white" [routerLinkActiveOptions]="{exact: true}" routerLink="/{{slug}}" >
+                    <i-feather name="link-2" class=""></i-feather>
+                    <span class="ml-4">Links</span>
+                </a> 
+            </li>
+            <li>
+                <a class="normal-case btn btn-ghost rounded-full btn-block justify-start hover:text-white transition-shadow" routerLinkActive="btn-active text-white" routerLink="/{{slug}}/settings">
+                    <i-feather name="settings"></i-feather>
+                    <span class="ml-4">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a class="normal-case btn btn-ghost rounded-full btn-block justify-start hover:text-white transition-shadow" routerLinkActive="btn-active text-white" routerLink="/{{slug}}/analytics">
+                    <i-feather name="pie-chart"></i-feather>
+                    <span class="ml-4">Analytics</span></a>
+            </li>
+        </ul>
+    </nav>
+</div>\

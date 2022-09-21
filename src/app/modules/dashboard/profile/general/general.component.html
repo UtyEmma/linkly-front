@@ -1,0 +1,26 @@
+<div class="card bg-white md:w-3/6 mx-auto">
+    <div class="card-body space-y-4">
+        <div>
+            <h3 class="text-lg font-semibold">Profile Details</h3>
+        </div>
+
+        <form [formGroup]="profileForm" class="space-y-4">
+            <app-select-img name="logo" [src]="user?.image" (change)="updateImg($event)" ></app-select-img>
+
+            <div>
+                <label for="">Name</label>
+                <input type="text" formControlName="name" class="input input-bordered w-full">
+                <app-error [submitted]="submitted" [control]="profileForm.get('title')" ></app-error>
+                <small class="text-red-600">{{httpErrors?.title}}</small>
+            </div>
+            <div>
+                <label for="">Email Address</label>
+                <input type="text" formControlName="email" class="input input-bordered w-full">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary btn-wide">Update Profile</button>
+            </div>
+        </form>
+    </div>
+</div>

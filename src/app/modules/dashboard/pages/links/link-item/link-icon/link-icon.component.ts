@@ -5,7 +5,7 @@ import { PageService } from 'src/app/providers/services/pages/page.service';
 @Component({
   selector: 'app-link-icon',
   templateUrl: './link-icon.component.html',
-  styleUrls: ['./link-icon.component.scss']
+  styleUrls: ['./link-icon.component.scss'],
 })
 export class LinkIconComponent implements OnInit {
 

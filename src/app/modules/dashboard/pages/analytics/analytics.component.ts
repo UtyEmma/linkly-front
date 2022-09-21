@@ -20,6 +20,8 @@ export class AnalyticsComponent implements OnInit {
     views: [],
   }
 
+  regions: any
+
   devices: any = {
     mobile: 0,
     tablet: 0,
@@ -36,7 +38,7 @@ export class AnalyticsComponent implements OnInit {
     this._pageService.current.subscribe(page => {
       this.page = page
       this.loadStats()
-      this._title.setTitle(`${page.title} - Settings`)
+      this._title.setTitle(`${page.title} - Analytics`)
     })
   }
 
@@ -55,7 +57,6 @@ export class AnalyticsComponent implements OnInit {
             })
             
             devices.map((value) => {
-              // this.devices[value.device] = this.percentage(360, this.percentage(value.total, res.data.visits))
               this.devices[value.device] = value.total
             })
 
@@ -64,8 +65,10 @@ export class AnalyticsComponent implements OnInit {
         )        
   }
 
-  percentage(total: number, denominator: number){
-    return (total * 100) / denominator 
+  percentage(total: number, denominator: number, ceil: boolean = false){
+    const percent = (total / denominator) * 100
+    if(ceil) return Math.ceil(percent)
+    return percent
   }
 
   onError(error: HttpErrorResponse){

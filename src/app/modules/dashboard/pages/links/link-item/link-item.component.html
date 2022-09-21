@@ -1,21 +1,21 @@
 <div class="w-full bg-white hover:shadow-lg transition-shadow  rounded-xl link-item">
-    <div class="flex space-x-1  p-5">
+    <div class="flex space-x-1  md:p-5 p-3 py-5">
         <div class="w-1/12 flex items-center">
-            <button class="btn btn-ghost btn-square btn-sm cursor-move" >
-                <i-tabler name="grip-vertical" class="text-gray-400" ></i-tabler>
-            </button>
+            <ng-content></ng-content>
         </div>
         <div class="flex-1">
-            <div class="flex space-x-2 items-center">
-                <div class="w-12 h-12 flex items-center justify-center overflow-auto p-2 bg-gray-100 rounded-xl">
-                    <i *ngIf="link.thumbnail === 'icon'" class="ti ti-{{link.icon}} text-2xl" ></i>
-                    <img *ngIf="link.thumbnail === 'image'" class="w-full h-full rounded-full" [src]="link.icon" alt="">
+            <div class="md:flex space-y-2 space-x-2 items-center">
+                <div class="">
+                    <div class="w-12 h-12  flex items-center justify-center overflow-auto p-2 bg-gray-100 rounded-xl">
+                        <i *ngIf="link.thumbnail === 'icon'" class="ti ti-{{link.icon}} text-2xl" ></i>
+                        <img *ngIf="link.thumbnail === 'image'" class="w-full h-full rounded-full" [src]="link.icon" alt="">
+                    </div>
                 </div>
                 <div class="flex-1">
-                    <p class="flex items-center">
-                        <span *ngIf="title" class="font-semibold">{{link.title || "Link Title"}}</span>
-                        <input #linkTitle class="border-0 min-w-max outline-0 border-b border-gray-700 mr-1 px-1" (blur)="updateLink($event)" name="title"  [hidden]="title" placeholder="Title" value="{{link.title}}" />
-                        <button *ngIf="title" (click)="toggleInput('title', false, 'linkTitle')" class="btn btn-square btn-xs btn-ghost ml-1">
+                    <p class="flex items-center ">
+                        <span *ngIf="title" class="font-semibold leading-none">{{link.title || "Link Title"}}</span>
+                        <input #linkTitle class="border-0 min-w-max outline-0 border-b border-gray-700 mr-1 px-1" (blur)="updateLink($event)" name="title" [hidden]="title" placeholder="Title" value="{{link.title}}" />
+                        <button *ngIf="title" #togglelinkTitle (click)="toggleInput('title', false, 'linkTitle')" class="btn btn-square btn-xs btn-ghost ml-1">
                             <i-feather name="edit-3" style="width: 14px; height: 14px;" ></i-feather>
                         </button>
                         <button *ngIf="!title" (click)="toggleInput('title', true, 'linkTitle')"  class="btn btn-square btn-ghost btn-active btn-xs ml-1">
@@ -24,9 +24,9 @@
                     </p>
                     
                     <p class="flex items-center">
-                        <span *ngIf="url" class="text-gray-700">{{link.url || "https://myawesomelink.com"}}</span>
-                        <input class="border-0 min-w-max outline-0 border-b border-gray-700 mr-1 px-1" (blur)="updateLink($event)" name="url"  [hidden]="url" placeholder="URL" value="{{link.url}}" />
-                        <button *ngIf="url" (click)="toggleInput('url', false, 'linkUrl')" class="btn btn-square btn-xs btn-ghost ml-1">
+                        <span *ngIf="url" class="text-gray-700 text-sm leading-none md:text-base">{{link.url || "https://myawesomelink.com"}}</span>
+                        <input class="border-0 min-w-max outline-0 border-b border-gray-700 mr-1 px-1" (blur)="updateLink($event)" name="url" #linkUrl  [hidden]="url" placeholder="URL" value="{{link.url}}" />
+                        <button *ngIf="url"  #togglelinkUrl (click)="toggleInput('url', false, 'linkUrl')" class="btn btn-square btn-xs btn-ghost ml-1">
                             <i-feather name="edit-3" style="width: 14px; height: 14px;" ></i-feather>
                         </button>
                         <button *ngIf="!url" (click)="toggleInput('url', true, 'linkUrl')"  class="btn btn-square btn-ghost btn-active btn-xs ml-1">
@@ -40,9 +40,9 @@
                 <!-- <button (click)="toggleExpansion('shorturl', 'Link Shortener')" [ngClass]="expansion == 'shorturl' ? 'btn-active' : ''" class="btn btn-sm btn-square btn-ghost">
                     <i-feather name="link" style="width: 16px; height: 16px;" ></i-feather>
                 </button> -->
-
-                <button (click)="toggleExpansion('linkIcon', 'Link Thumbnail')" [ngClass]="expansion == 'linkIcon' ? 'btn-active' : ''" class="btn btn-sm btn-square btn-ghost">
+                <button (click)="toggleExpansion('linkIcon', 'Link Thumbnail')" [ngClass]="expansion == 'linkIcon' ? 'btn-active' : ''" class="btn btn-sm space-x-2 btn-ghost">
                     <i-feather name="image" style="width: 17px; height: 17px;" ></i-feather>
+                    <span class="text-sm font-medium normal-case">Thumbnail</span>
                 </button>
     
                 <p class="flex items-center">
@@ -50,9 +50,17 @@
                     <span class="ml-1 text-sm font-medium">{{link?.clicks.length}} Clicks</span>
                 </p>
             </div>
+
+            <div class="md:hidden flex justify-between mt-3">
+                <app-switch (change)="toggleStatus($event)" [disabled]="!isPublishable()" [defaultChecked]="link?.status == 'published'" ></app-switch>
+                
+                <button (click)="deleteLink()" class="btn btn-square btn-sm btn-ghost ml-1">
+                    <i-feather name="trash-2" style="width: 16px; height: 16px;" ></i-feather>
+                </button>
+            </div>
         </div>
         <div class="">
-            <div class="flex flex-col justify-between h-full">
+            <div class="hidden md:flex flex-col justify-between h-full">
                 <app-switch (change)="toggleStatus($event)" [disabled]="!isPublishable()" [defaultChecked]="link?.status == 'published'" ></app-switch>
                 
                 <button (click)="deleteLink()" class="btn btn-square btn-sm btn-ghost ml-1">
@@ -62,7 +70,7 @@
         </div>
     </div>
     
-    <div [ngClass]="expansion ? 'block' : 'hidden'" >
+    <div *ngIf="expansion" [@slideDown]="expansion" class="overflow-hidden" >
         <div class="border-y py-1 bg-gray-50 text-center relative">
             <p class="font-semibold mb-0">{{expansionTitle}}</p>
             <button (click)="closeExpansion()" class="btn btn-square btn-xs btn-ghost absolute right-5 top-1">

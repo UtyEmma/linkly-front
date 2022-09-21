@@ -5,6 +5,8 @@ import _cookies from '../../providers/cookies.provider';
 import CookieProvider from '../../providers/cookies.provider';
 import { AppService } from '../app/app.service';
 import { UserService } from '../user/user.service';
+import {HttpClient} from '@angular/common/http'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,11 @@ export class AuthService {
   rememberTokenKey = "remtok_id"
   cookie
 
-  constructor(private _user: UserService) { 
+  constructor(
+    private _user: UserService,
+    private _http: HttpClient,
+    private _router: Router
+    ) { 
     this.cookie = new Cookies()
   }
 
@@ -57,7 +63,9 @@ export class AuthService {
   }
 
   logout(){
-    return _cookies.remove(this.key)
+    this._http.get('/logout').subscribe((res) => {})
+    _cookies.remove(this.key)
+    return this._router.navigateByUrl('/login')
   }
 
 }

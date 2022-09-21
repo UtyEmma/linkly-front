@@ -16,7 +16,6 @@ export class DevicesChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.stats)
     this.doughnutChartData = {
       labels: this.doughnutChartLabels,
       datasets: [

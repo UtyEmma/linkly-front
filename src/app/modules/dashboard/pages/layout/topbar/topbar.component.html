@@ -1,0 +1,56 @@
+<div class="flex bg-white border-b py-3 md:py-0 space-x-3">
+    <div class="px-4 flex md:w-3/5 mx-auto w-full flex-1 items-center justify-between  sticky top-0 z-50">
+        <div class="flex items-center space-x-3">
+            <div class="dropdown md:hidden">
+                <label tabindex="0" class="btn btn-ghost btn-sm btn-square m-1">
+                    <i-tabler name="menu-2"></i-tabler>
+                </label>
+                <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-80 mt-3">
+                    <li>
+                        <a class="normal-case btn btn-ghost rounded-full btn-block justify-start hover:text-white transition-shadow" routerLinkActive="btn-active text-white" [routerLinkActiveOptions]="{exact: true}" routerLink="/{{slug}}" >
+                            <i-feather name="link-2" class=""></i-feather>
+                            <span class="ml-4">Links</span>
+                        </a> 
+                    </li>
+                    <li>
+                        <a class="normal-case btn btn-ghost rounded-full btn-block justify-start hover:text-white transition-shadow" routerLinkActive="btn-active text-white" routerLink="/{{slug}}/settings">
+                            <i-feather name="settings"></i-feather>
+                            <span class="ml-4">Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="normal-case btn btn-ghost rounded-full btn-block justify-start hover:text-white transition-shadow" routerLinkActive="btn-active text-white" routerLink="/{{slug}}/analytics">
+                            <i-feather name="pie-chart"></i-feather>
+                            <span class="ml-4">Analytics</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="">
+                <p class="text-base  pb-0 leading-none mb-0 font-semibold">{{title}}</p>
+                <small class="mt-0 leading-none">{{subtitle}}</small>
+            </div>
+        </div>
+
+        <div>
+            <app-mockup-mobile [page]="page"></app-mockup-mobile>
+        </div>
+    </div>
+
+    <div class="w-2/5 hidden md:flex bg-white px-7 sticky top-0 z-50 border-l">
+        <div class="w-11/12 flex justify-between items-center mx-auto">
+            <a href="http://localhost:4200/{{page?.slug}}" target="_blank" class="text-sm btn btn-link normal-case py-0 px-0 underline">http://localhost:4200/{{page?.slug}}</a>
+            
+            <div class="space-x-2">
+                <button (click)="shareLink()" class="btn btn-sm text-sm btn-ghost">
+                    <i-feather name="share-2" style="width: 16px; height: 16px;" class="mr-2" ></i-feather>
+                    Share
+                </button>
+    
+                <a href="http://localhost:4200/{{page?.slug}}" target="_blank"  class="btn btn-sm text-sm btn-ghost">
+                    <i-feather name="external-link" style="width: 16px; height: 16px;" class="mr-2" ></i-feather>
+                    Preview
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

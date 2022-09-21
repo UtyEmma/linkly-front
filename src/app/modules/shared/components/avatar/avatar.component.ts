@@ -9,6 +9,7 @@ export class AvatarComponent implements OnInit {
 
   @Input('src') src!: string
   @Input('alt') alt!: string
+  @Input('textSize') textSize = '4'
   @Input('className') className: string = "w-20"
 
 
