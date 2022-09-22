@@ -1,11 +1,10 @@
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs'
 import { HttpErrorService } from 'src/app/providers/services/http/errors/http-error.service';
 import { UserService } from 'src/app/providers/services/user/user.service';
-
 
 @Component({
   selector: 'app-new-page',
@@ -14,6 +13,7 @@ import { UserService } from 'src/app/providers/services/user/user.service';
 })
 export class NewPageComponent implements OnInit {
 
+  @Input('id') id = 'new-page-modal'
   newPageForm!: FormGroup
 	submitted: boolean = false
 	loading = false

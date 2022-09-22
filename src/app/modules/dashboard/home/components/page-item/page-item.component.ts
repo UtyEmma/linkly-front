@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-page-item',
@@ -7,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PageItemComponent implements OnInit {
 
+  appUrl = environment.appBaseURL
   @Input() page: any
 
   constructor() { }

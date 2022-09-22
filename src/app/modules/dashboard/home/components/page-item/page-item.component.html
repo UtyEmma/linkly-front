@@ -6,18 +6,24 @@
         <div class="flex-1">
             <div>
                 <a routerLink="/{{page.slug}}" [state]="{page}" class="text-gray-600 font-medium text-lg">{{page.title}}</a>              
-                <p class="text-gray-400 text-sm">https://localhost:4200/{{page.slug}}</p>      
+                <p class="text-gray-400 text-sm">{{appUrl}}/{{page.slug}}</p>      
             </div>      
     
             <div class="flex items-center justify-between w-full space-x-2 mt-2">
-                <p class="flex items-center space-x-2">
-                    <i-feather name="eye" style="width: 16px; height: 16px;" ></i-feather>
-                    <span class="ml-1 text-sm font-medium">{{page?.visits.length}} Views</span>
-                </p>
+                <div class="flex space-x-3">
+                    <p class="flex items-center space-x-2">
+                        <i-feather name="eye" style="width: 16px; height: 16px;" ></i-feather>
+                        <span class="ml-1 text-sm font-medium">{{page?.visits.length}} Views</span>
+                    </p>
+    
+                    <p class="flex items-center">
+                        <i-feather name="bar-chart" style="width: 16px; height: 16px;" ></i-feather>
+                        <span class="ml-1 text-sm font-medium">{{page?.clicks?.length}} Clicks</span>
+                    </p>
+                </div>
 
-                <a href="http://localhost:4200/{{page.slug}}" target="_blank" class="btn btn-sm btn-ghost space-x-3">
-                    <span>View Page</span>
-                    <i-feather name="feather" style="width: 16px; height: 16px;" ></i-feather>
+                <a href="{{appUrl}}/{{page.slug}}" target="_blank" class="btn btn-sm btn-ghost btn-square space-x-2">
+                    <i-feather name="external-link" style="width: 16px; height: 16px;" ></i-feather>
                 </a>
             </div>
         </div>

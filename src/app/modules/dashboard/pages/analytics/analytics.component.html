@@ -2,7 +2,7 @@
 >
 <!-- subtitle="Visualize your page's performance" -->
     <div class="w-full px-4">
-        <div class="md:w-9/12 mx-auto md:py-10 py-4 space-y-4">
+        <div class="md:w-10/12 mx-auto md:py-10 py-4 space-y-4">
             <div class="card bg-white">
                 <div class="card-body flex space-y-5">
                     <div class="text-center p-2 bg-gray-50 rounded-xl">
@@ -34,23 +34,8 @@
 
             <div class="space-y-2">
                 <label for="" class="lh-0">
-                    <h4 class="font-semibold mb-0">Select a timeline</h4>
-                    <p class="text-sm mt-0">View your Page's performance within a particular period</p>
+                    <h4 class="font-semibold mb-0">Performance</h4>
                 </label>
-                <div class="flex justify-between">
-                    <div class="w-48" >
-                        <app-datepicker></app-datepicker>
-                    </div>
-
-                    <div>
-                        <select class="select select-bordered" name="" id="">
-                            <option value="">Today</option>
-                            <option value="">This Week</option>
-                            <option value="">This Month</option>
-                            <option value="">This Year</option>
-                        </select>
-                    </div>
-                </div>
             </div>
 
             <div class="card bg-white  ">
@@ -59,15 +44,29 @@
                 </div>
             </div>
             
-            <div class="card bg-white">
-                <div class="card-body">
+            <div class="space-y-3">
+                <div>
                     <app-devices-chart [stats]="devices" *ngIf="show" ></app-devices-chart>
                 </div>
             </div>
 
-            <div class="card bg-white">
-                <div class="card-body">
-                    <app-location-chart [stats]="regions" *ngIf="show" ></app-location-chart>
+            <div class="space-y-3">
+                <label for="" class="lh-0">
+                    <h4 class="font-semibold mb-0">Locations</h4>
+                    <p class="text-sm mt-0">View where your visitors are located</p>
+                </label>
+
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <div class="grid grid-cols-3">
+                            <div>
+
+                            </div>
+                            <div class="col-span-2">
+                                <app-location-chart [stats]="countries" *ngIf="show" ></app-location-chart>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

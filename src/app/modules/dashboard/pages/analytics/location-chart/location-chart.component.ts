@@ -33,16 +33,16 @@ export class LocationChartComponent implements OnInit, AfterViewInit {
       let root = am5.Root.new("chartdiv");
       let chart = root.container.children.push(
         am5map.MapChart.new(root, {
-          projection: am5map.geoMercator()
+          projection: am5map.geoNaturalEarth1(),
         })
       );
 
       chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
-      let polygonSeries = chart.series.push(
+      const polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {
           geoJSON: am5geodata_worldLow,
-          exclude: ["AQ"]
+          exclude: ["AQ",]
         })
       );
 
@@ -51,19 +51,26 @@ export class LocationChartComponent implements OnInit, AfterViewInit {
         interactive: true
       });
 
-      polygonSeries.mapPolygons.template.states.create("hover", {
-        fill: am5.color(0x677935)
-      });
-
       polygonSeries.data.setAll([{
-        id: "FR",
-        name: "France",
-        value: 100
+        id: "US",
+        polygonSettings: {
+          fill: am5.color(0xFF3C38)
+        }
       }, {
-        id: "ES",
-        name: "Spain",
-        value: 200
-      }]);
+        id: "CA",
+        polygonSettings: {
+          fill: am5.color(0xA23E48)
+        }
+      }, {
+        id: "MX",
+        polygonSettings: {
+          fill: am5.color(0xFF8C42)
+        }
+      }])
+      // polygonSeries.mapPolygons.template.states.create("hover", {
+      //   fill: am5.color(0x677935)
+      // });
+
 
     })
   }

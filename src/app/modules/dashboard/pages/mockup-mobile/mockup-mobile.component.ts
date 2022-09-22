@@ -1,5 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, Input } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { share } from 'src/library/navigator';
 
 @Component({
   selector: 'app-mockup-mobile',
@@ -19,6 +21,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MockupMobileComponent implements OnInit {
 
+  appUrl = environment.appBaseURL
   @Input('page') page!: any
   show: boolean = false
   constructor() { }
@@ -27,7 +30,8 @@ export class MockupMobileComponent implements OnInit {
   }
 
   shareLink(){
-
+    const link = `${this.appUrl}/${this.page?.slug}`
+    share(link, this.page.title)
   }
 
   toggle(state: boolean){

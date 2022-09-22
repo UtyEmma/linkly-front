@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  apiBaseURL: 'https://api.leadaa.site/api',
+  appBaseURL: 'https://leadaa.site'
 };

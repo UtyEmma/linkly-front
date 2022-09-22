@@ -19,7 +19,7 @@ export class DevicesChartComponent implements OnInit {
     this.doughnutChartData = {
       labels: this.doughnutChartLabels,
       datasets: [
-        { data: [this.stats.mobile, this.stats.tablet, this.stats.desktop] }
+        { data: [this.stats.mobile.total, this.stats.tablet.total, this.stats.desktop.total] }
       ]
     };
   }

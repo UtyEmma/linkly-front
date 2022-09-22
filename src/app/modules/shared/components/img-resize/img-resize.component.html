@@ -4,20 +4,29 @@
           <i-tabler name="photo"></i-tabler>
           <span>Select File</span>
         </button>
-        <div class="btn-group rounded-none">
-            <button (click)="cropper.zoomIn()" class="btn rounded-none btn-square btn-ghost  btn-sm">
-                <i-tabler name="zoom-in"></i-tabler>
-            </button>
-            <button (click)="cropper.zoomOut()" class="btn btn-square btn-ghost btn-sm">
-                <i-tabler name="zoom-out"></i-tabler>
-            </button>
-            <button (click)="cropper.center()" class="btn btn-square btn-ghost  btn-sm">
-                <i-tabler name="focus-centered"></i-tabler>
-            </button>
-            <button (click)="cropper.rotate(-90)" class="btn btn-square btn-ghost btn-sm">
-                <i-tabler name="rotate-clockwise"></i-tabler>
-            </button>
-        </div>
+        
+        <ul class="menu menu-horizontal bg-base-100 rounded-box">
+            <li>
+                <a (click)="cropper.zoomIn()">
+                    <i-tabler name="zoom-in"></i-tabler>
+                </a>
+            </li>
+            <li>
+                <a (click)="cropper.zoomOut()">
+                    <i-tabler name="zoom-out"></i-tabler>
+                </a>
+            </li>
+            <li>
+                <a (click)="cropper.center()">
+                    <i-tabler name="focus-centered"></i-tabler>
+              </a>
+            </li>
+            <li>
+                <a (click)="cropper.rotate(-90)">
+                    <i-tabler name="rotate-clockwise"></i-tabler>
+                </a>
+            </li>
+        </ul>
     
         <div>
             <!-- <button (click)="cropper.fit()" class="btn btn-ghost btn-outline">Fit</button>

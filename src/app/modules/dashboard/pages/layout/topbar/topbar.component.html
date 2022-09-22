@@ -38,7 +38,7 @@
 
     <div class="w-2/5 hidden md:flex bg-white px-7 sticky top-0 z-50 border-l">
         <div class="w-11/12 flex justify-between items-center mx-auto">
-            <a href="http://localhost:4200/{{page?.slug}}" target="_blank" class="text-sm btn btn-link normal-case py-0 px-0 underline">http://localhost:4200/{{page?.slug}}</a>
+            <a href="{{appUrl}}/{{page?.slug}}" target="_blank" class="text-sm btn btn-link normal-case py-0 px-0 underline">{{appUrl}}/{{page?.slug}}</a>
             
             <div class="space-x-2">
                 <button (click)="shareLink()" class="btn btn-sm text-sm btn-ghost">
@@ -46,7 +46,7 @@
                     Share
                 </button>
     
-                <a href="http://localhost:4200/{{page?.slug}}" target="_blank"  class="btn btn-sm text-sm btn-ghost">
+                <a href="{{appUrl}}/{{page?.slug}}" target="_blank"  class="btn btn-sm text-sm btn-ghost">
                     <i-feather name="external-link" style="width: 16px; height: 16px;" class="mr-2" ></i-feather>
                     Preview
                 </a>

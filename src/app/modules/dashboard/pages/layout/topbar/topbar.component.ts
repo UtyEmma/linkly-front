@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PageService } from 'src/app/providers/services/pages/page.service';
+import { environment } from 'src/environments/environment';
+import { share } from 'src/library/navigator';
 import Str from 'src/library/Str';
 
 @Component({
@@ -9,6 +11,8 @@ import Str from 'src/library/Str';
 })
 export class TopbarComponent implements OnInit {
 
+  appUrl = environment.appBaseURL
+  
   page: any
   @Input('slug') slug: any
   @Input('title') title: any
@@ -29,11 +33,8 @@ export class TopbarComponent implements OnInit {
   }  
   
   shareLink(){
-    const link = `http://localhost:4200/${this.page?.slug}`
-    Str.parse(link).share({
-      title: this.page?.title,
-      text: "Share two"
-    })
+    const link = `${this.appUrl}/${this.page?.slug}`
+    share(link, this.page.title)
   }
 
 

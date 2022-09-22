@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiBaseURL: 'http://localhost:8000/api',
-  appBaseURL: `${window.location.origin}/`
+  appBaseURL: `http://localhost:4200`
 };
 
 

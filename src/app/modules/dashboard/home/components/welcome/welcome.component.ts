@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs'
 import { HttpErrorService } from 'src/app/providers/services/http/errors/http-error.service';
 import { UserService } from 'src/app/providers/services/user/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-welcome',
@@ -13,6 +14,7 @@ import { UserService } from 'src/app/providers/services/user/user.service';
 })
 export class WelcomeComponent implements OnInit {
 
+	appUrl = environment.appBaseURL
 	newPageForm!: FormGroup
 	submitted: boolean = false
 	loading = false

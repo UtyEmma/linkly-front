@@ -20,12 +20,21 @@ export class AnalyticsComponent implements OnInit {
     views: [],
   }
 
-  regions: any
+  countries: any
 
   devices: any = {
-    mobile: 0,
-    tablet: 0,
-    desktop: 0
+    mobile: {
+      percent: 0,
+      total: 0
+    },
+    tablet: {
+      percent: 0,
+      total: 0
+    },
+    desktop: {
+      percent: 0,
+      total: 0
+    }
   }
 
   constructor(
@@ -49,6 +58,7 @@ export class AnalyticsComponent implements OnInit {
           (res: any) => {
             const activity : any = res.data.activity
             const devices: any[] = res.data.devices
+            const countries: any[] = res.data.countries
             
             activity.map((value: any, index: number) => {
               this.activity.clicks.push(value.clicks)
@@ -57,7 +67,16 @@ export class AnalyticsComponent implements OnInit {
             })
             
             devices.map((value) => {
-              this.devices[value.device] = value.total
+              this.devices[value.device].percent = this.percentage(value.total, res.data.visits, true)
+              this.devices[value.device].total = value.total
+            })
+
+            this.countries = countries.map((value) => {
+              return {
+                id: value.country_code,
+                name: value.country,
+                value: value.value
+              }
             })
 
             this.show = true
