@@ -9,15 +9,15 @@
             <i-tabler name="chevron-down" class="h-8 w-8"></i-tabler>
         </label>
         <div class="dropdown-content p-2 py-3 shadow bg-base-100 rounded-box w-60" tabindex="0">
-            <p class="text-sm font-semibold text-center py-2 px-3">Switch Pages</p>
+            <p *ngIf="pages.length > 1" class="text-sm font-semibold text-center py-2 px-3">Switch Pages</p>
 
-            <div *ngIf="pages.length > 0" class="space-y-1">
+            <div *ngIf="pages.length > 1" class="space-y-1">
                 <div *ngFor="let item of pages">
                     <a class="btn btn-block btn-ghost justify-start normal-case font-normal" *ngIf="item.id !== page.id" href="/{{item.slug}}" >{{item.title}}</a>
                 </div>
             </div>
             
-            <hr class="my-3" *ngIf="pages.length > 0"> 
+            <hr class="my-3" *ngIf="pages.length > 1"> 
 
 
             <label for="new-page-modal" class="btn btn-primary gap-2 btn-block">
@@ -52,5 +52,3 @@
         </nav>
     </div>
 </div>
-
-<app-new-page ></app-new-page>

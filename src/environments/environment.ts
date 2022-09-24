@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   apiBaseURL: 'http://localhost:8000/api',
-  appBaseURL: `http://localhost:4200`
+  appBaseURL: `http://localhost:4200`,
+  dashboardBaseURL: 'http://app.localhost:4200',
+  appName: 'Leadaa'
 };
 
 

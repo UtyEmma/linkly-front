@@ -44,7 +44,7 @@ export class LinksComponent implements OnInit, OnChanges {
       if(page){
         this._title.setTitle(`${page.title} - Link`)
         this.links = page?.links || []
-        if(page?.links.length < 1) this.addLink()
+        if(page?.links && page?.links.length < 1) this.addLink()
       }
     })
   }

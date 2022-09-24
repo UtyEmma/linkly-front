@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  dashboardUrl = environment.dashboardBaseURL
+  constructor(
+    private title: Title,
+    private meta: Meta
+  ) { }
 
   ngOnInit(): void {
+    this.title.setTitle("Leadaa - Organize and Manage your links for Free ")
+    // this.meta.addTags()
   }
 
 }
