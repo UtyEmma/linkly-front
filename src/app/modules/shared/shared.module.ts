@@ -36,7 +36,7 @@ const Icons : any = FeatherIcons
     ImgResizeComponent,
     ModalComponent,
     AvatarComponent,
-    TagsInputComponent,
+    TagsInputComponent
   ],
   imports: [
     CommonModule,

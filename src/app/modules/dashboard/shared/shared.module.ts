@@ -8,30 +8,26 @@ import { allIcons } from 'angular-feather/icons';
 import { UserService } from 'src/app/providers/services/user/user.service';
 import { RouterModule } from '@angular/router';
 import {SharedModule as Shared} from '../../shared/shared.module';
-import { NewPageComponent } from './new-page/new-page.component'
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    DashboardComponent,
-    NewPageComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
     FeatherModule.pick(allIcons),
     RouterModule,
-    Shared,
-    ReactiveFormsModule
+    Shared
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     FeatherModule,
     DashboardComponent,
-    Shared,
-    NewPageComponent
+    Shared
   ],
 })
 export class SharedModule { }

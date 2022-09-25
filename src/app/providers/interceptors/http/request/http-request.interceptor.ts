@@ -8,11 +8,14 @@ import {
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/providers/services/auth/auth.service';
+import { ToastService } from 'src/app/providers/services/alert/toast.service';
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
 
-  constructor(private _auth: AuthService) {}
+  constructor(
+    private _auth: AuthService, 
+    private _toast: ToastService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const newRequest = request.clone({

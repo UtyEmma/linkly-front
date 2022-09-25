@@ -24,8 +24,6 @@ import { NgChartsModule } from 'ng2-charts';
 import { BackgroundComponent } from './settings/theme/background/background.component';
 import { AppearanceComponent } from './appearance/appearance.component';
 import { LinkImgComponent } from './links/link-item/link-icon/link-img/link-img.component';
-import {CdkStepperModule} from '@angular/cdk/stepper';
-import {NgxPhotoEditorModule} from "ngx-photo-editor";
 import { ProfileComponent } from './settings/profile/profile.component';
 import { SeoComponent } from './settings/seo/seo.component';
 import { SocialComponent } from './settings/social/social.component';
@@ -66,9 +64,7 @@ import { TopbarComponent } from './layout/topbar/topbar.component'
     Shared,
     DragDropModule,
     NgApexchartsModule,
-    NgChartsModule,
-    CdkStepperModule,
-    NgxPhotoEditorModule
+    NgChartsModule
   ],
   providers: [
     PageService

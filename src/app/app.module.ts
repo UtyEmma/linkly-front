@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecoverPasswordComponent } from './modules/auth/recover-password/recover-password.component';
 import { ResetPasswordComponent } from './modules/auth/reset-password/reset-password.component';
 import { AppService } from './providers/services/app/app.service';
+import { ToastService } from './providers/services/alert/toast.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AppService } from './providers/services/app/app.service';
     BrowserAnimationsModule
   ],
   providers: [
+    ToastService,
     INTERCEPTORS,
     UserService,
     AppService

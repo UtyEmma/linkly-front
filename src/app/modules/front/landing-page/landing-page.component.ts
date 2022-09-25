@@ -16,7 +16,7 @@ export class LandingPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.title.setTitle("Leadaa - Organize and Manage your links for Free ")
+    this.title.setTitle("Leadaa - Organize and Manage your important links for Free ")
     // this.meta.addTags()
   }
 

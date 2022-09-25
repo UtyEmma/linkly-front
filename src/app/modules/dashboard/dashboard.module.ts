@@ -13,6 +13,7 @@ import { PageItemComponent } from './home/components/page-item/page-item.compone
 import { ProfileComponent } from './profile/profile.component';
 import { GeneralComponent } from './profile/general/general.component';
 import { PasswordComponent } from './profile/password/password.component';
+import { NewPageComponent } from './home/components/new-page/new-page.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { PasswordComponent } from './profile/password/password.component';
     ProfileComponent,
     GeneralComponent,
     PasswordComponent,
+    NewPageComponent
   ],
   imports: [
     CommonModule,

@@ -30,9 +30,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/apexcharts/dist/apexcharts.min.js"
-            ]
+            "scripts": [ ]
           },
           "configurations": {
             "production": {
@@ -100,7 +98,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "/node_modules/notifilix/dist/notiflix-aio-3.2.5.min.js"
+              
+            ]
           }
         }
       }

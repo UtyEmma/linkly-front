@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Notify } from 'notiflix';
+import { ToastService } from 'src/app/providers/services/alert/toast.service';
 import { AuthService } from 'src/app/providers/services/auth/auth.service';
 import { UserService } from 'src/app/providers/services/user/user.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
@@ -17,12 +18,14 @@ export class DashboardComponent implements OnInit {
     private _user: UserService, 
     private _auth: AuthService, 
     private _cdr: ChangeDetectorRef,
-    private _router: Router) { }
+    private _router: Router,
+    private _toast: ToastService) { }
 
   async ngOnInit(): Promise<void> {
-    if(!this._user.get()) {
-      this._auth.status() ? await this._auth.refresh() : (this._auth.getRememberToken() ? this.remember() : this.logout())
-    }
+    if(!this._user.get()) this._auth.status() 
+                                ? await this._auth.refresh() 
+                                : (this._auth.getRememberToken() ? this.remember() : this.logout())
+    
     this._user.current.subscribe(user => this.user = user)
   }
 
