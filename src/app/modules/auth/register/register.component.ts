@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/providers/services/auth/auth.service';
 import { catchError, Observable, of, throwError } from 'rxjs';
 import { HttpErrorService } from 'src/app/providers/services/http/errors/http-error.service';
 import { environment } from 'src/environments/environment';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -26,11 +27,13 @@ export class RegisterComponent implements OnInit {
 	private _http: HttpClient, 
 	private _router: Router, 
 	private _auth: AuthService,
-	private _err: HttpErrorService) { }
+	private _err: HttpErrorService,
+	private _title: Title
+	) { }
 
   ngOnInit(): void {
 	if(this._auth.status()) this._router.navigateByUrl('/')
-	
+	this._title.setTitle(`Create your ${environment.appName} account`)
     this.registerForm = this._fb.group({
       name: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required, Validators.email])],

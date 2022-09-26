@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { catchError, Observer, throwError } from 'rxjs';
 import { ToastService } from 'src/app/providers/services/alert/toast.service';
@@ -27,12 +28,13 @@ export class LoginComponent implements OnInit {
 		private _auth: AuthService,
 		private _router: Router,
 		private _err: HttpErrorService,
-		private _toast: ToastService
+		private _toast: ToastService,
+		private _title: Title
 	) { }
 
 	ngOnInit(): void {
 		if(this._auth.status()) this._router.navigateByUrl('/')
-		
+		this._title.setTitle(`Login to your ${environment.appName} Account`)
 		this.loginForm = this._fb.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])],
 			password: ['', Validators.compose([Validators.required])],

@@ -5,6 +5,7 @@ import _cookies from 'src/app/providers/providers/cookies.provider';
 import { PageService } from 'src/app/providers/services/pages/page.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Title, Meta } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-link-page',
@@ -18,6 +19,8 @@ export class LinkPageComponent implements OnInit {
   session_id!: string
   session_key: string = 'lly_sess_id'
   deviceInfo!: any
+  appUrl = environment.appBaseURL
+  appName = environment.appName
 
   constructor(
     private _http: HttpClient,

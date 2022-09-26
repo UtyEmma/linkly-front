@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { catchError, Observer, throwError } from 'rxjs';
 import { ToastService } from 'src/app/providers/services/alert/toast.service';
@@ -27,10 +28,12 @@ export class RecoverPasswordComponent implements OnInit {
 		private _auth: AuthService,
 		private _router: Router,
 		private _err: HttpErrorService,
-		private _toast: ToastService
+		private _toast: ToastService,
+		private _title: Title
 	) { }
 
 	ngOnInit(): void {
+		this._title.setTitle(`Recover your Password`)
 		this.recoverPasswordForm = this._fb.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])]
 		})
