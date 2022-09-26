@@ -4,22 +4,26 @@
             <h3 class="text-lg font-semibold">Profile Details</h3>
         </div>
 
-        <form [formGroup]="profileForm" class="space-y-4">
-            <app-select-img name="logo" [src]="user?.image" (change)="updateImg($event)" ></app-select-img>
+        <form [formGroup]="profileForm" (ngSubmit)="updatePage()" class="space-y-4">
+            <app-select-img name="avatar" [alt]="user?.name" [src]="user?.avatar" (change)="updateImg($event)" ></app-select-img>
+            <app-error [submitted]="submitted" [control]="profileForm.get('avatar')" name="Avatar" ></app-error>
+            <small class="text-red-600">{{httpErrors?.avatar}}</small>
 
             <div>
                 <label for="">Name</label>
                 <input type="text" formControlName="name" class="input input-bordered w-full">
-                <app-error [submitted]="submitted" [control]="profileForm.get('title')" ></app-error>
+                <app-error [submitted]="submitted" [control]="profileForm.get('title')" name="Name" ></app-error>
                 <small class="text-red-600">{{httpErrors?.title}}</small>
             </div>
             <div>
                 <label for="">Email Address</label>
                 <input type="text" formControlName="email" class="input input-bordered w-full">
+                <app-error [submitted]="submitted" [control]="profileForm.get('email')" name="Email Address" ></app-error>
+                <small class="text-red-600">{{httpErrors?.email}}</small>
             </div>
 
             <div>
-                <button type="submit" class="btn btn-primary btn-wide">Update Profile</button>
+                <button type="submit" class="btn btn-primary btn-wide" [ngClass]="loading ? 'loading' : ''">Update Profile</button>
             </div>
         </form>
     </div>

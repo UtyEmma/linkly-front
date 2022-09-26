@@ -13,9 +13,12 @@ export class DevicesChartComponent implements OnInit {
   public doughnutChartData!: ChartData<'doughnut'> 
   public doughnutChartType: ChartType = 'doughnut';
 
+  hasStats!: any
+
   constructor() { }
 
   ngOnInit(): void {
+    this.hasStats = (this.stats.mobile.total || this.stats.desktop.total || this.stats.tablet.total)
     this.doughnutChartData = {
       labels: this.doughnutChartLabels,
       datasets: [

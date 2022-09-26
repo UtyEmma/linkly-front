@@ -1,8 +1,7 @@
 <div class="flex gap-3 items-center px-2">
-    <div class="avatar">
-        <div class="w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img [src]="src || defaultSrc | safe: 'url'" />
-        </div>
+    <div>
+        <app-avatar *ngIf="src" [src]="src | safe: 'url'" [alt]="alt" ></app-avatar>
+        <app-avatar *ngIf="!src" [src]="src" [alt]="alt" ></app-avatar>
     </div>
 
     <div class="flex-1 space-x-2">

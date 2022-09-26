@@ -11,24 +11,24 @@
             <div class="form-control w-full">
                 <label class="label"><span class="label-text">Page Title</span></label>
                 <input type="text" formControlName="title" placeholder="Title" class="input input-bordered w-full" />
-                <app-error [submitted]="submitted" [control]="infoForm.get('title')" ></app-error>
+                <app-error [submitted]="submitted" [control]="infoForm.get('title')" name="Page Title" ></app-error>
                 <small class="text-red-600">{{httpErrors?.title}}</small>
             </div>
             
             <div class="form-control w-full">
                 <label class="label"><span class="label-text">Page URL</span></label>
                 <div class="flex items-center input input-bordered border px-0 border-gray-200">
-                    <div class="inline border-0 pl-3 py-2 text-gray-600">http://localhost:4200/</div>
-                    <input type="text" formControlName="slug" placeholder="(ex. https://goolge.com)" class="bg-transparent flex-1 border-transparent py-1 text-gray-600 px-0 focus:outline-none"/>
-                    <app-error [submitted]="submitted" [control]="infoForm.get('slug')" ></app-error>
+                    <div class="inline border-0 pl-3 py-2 text-gray-600">{{appUrl}}/</div>
+                    <input formControlName="slug" type="text" placeholder="slug" class="placeholder:text-sm  bg-transparent flex-1 border-transparent  border-0 text-gray-600 px-0 focus:border-0 focus:outline-0 text-sm outline-0 shadow-none focus:shadow-none ring-0 focus:ring-0" />
                 </div>
+                <app-error [submitted]="submitted" [control]="infoForm.get('slug')" name="Page Slug" ></app-error>
                 <small class="text-red-600">{{httpErrors?.slug}}</small>
             </div>
             
             <div class="form-control w-full">
                 <label class="label"><span class="label-text">Page Description</span></label>
                 <textarea formControlName="desc" class="textarea textarea-bordered w-full resize-none" placeholder="Description"></textarea>
-                <app-error [submitted]="submitted" [control]="infoForm.get('desc')" ></app-error>
+                <app-error [submitted]="submitted" [control]="infoForm.get('desc')" name="Page Description" ></app-error>
                 <small class="text-red-600">{{httpErrors?.desc}}</small>
             </div>
 

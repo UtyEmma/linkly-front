@@ -13,7 +13,7 @@
         <div class="md:w-10/12 w-11/12 flex-1 mt-10 space-y-4 px-2">
             <div *ngFor="let link of page?.links">
                 <div class="">
-                    <a href="{{link?.url}}"  class="btn btn-primary btn-lg normal-case w-full relative btn-block text-base" (click)="updateClick(link?.unique_id)" target="_blank" *ngIf="link?.status === 'published'" >
+                    <a href="{{link?.url}}"  class="btn btn-primary md:btn-lg normal-case w-full relative btn-block text-base" (click)="updateClick(link?.unique_id)" target="_blank" *ngIf="link?.status === 'published'" >
                         <i *ngIf="link.thumbnail === 'icon'" class="ti ti-{{link.icon}} absolute my-2 left-3 text-3xl" ></i>
                         <img *ngIf="link.thumbnail === 'image'" class="w-10 h-10 rounded-full absolute left-3 my-2" [src]="link.icon" alt="">
                         {{link?.title}}
@@ -23,7 +23,7 @@
         </div>
         
         
-        <div class="text-center w-full text-white py-3">
+        <div class="text-center w-full text-white pb-3 pt-5">
             <p>Created with <a href="https://localhost.com" class="font-medium">Linkly</a>.</p>
         </div>
     </div>

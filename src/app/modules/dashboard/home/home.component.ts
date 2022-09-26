@@ -23,7 +23,9 @@ export class HomeComponent implements OnInit {
 
     this._userService.current.subscribe(user => {
       this.user = user
-      this._title.setTitle(`${user.name} - Dashboard`)
+      if(user){
+        this._title.setTitle(`${user?.name} - Dashboard`)
+      }
     })
   }
 

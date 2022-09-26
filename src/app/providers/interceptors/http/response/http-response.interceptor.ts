@@ -27,16 +27,16 @@ export class HttpResponseInterceptor implements HttpInterceptor {
 						switch (error.status) {
 							case 0:
 								this._toast.error("Error: Internet Connection Could not be established")
-								return throwError(() => new Error("Error: Internet Connection Could not be established"));
+								return throwError(() => new Error());
 							case 500:
 								this._toast.error("Error 500: Internal Server Error")
-								return throwError(() => new Error('Something bad happened; please try again later.'));
-								case 401:
+								return throwError(() => new Error());
+							case 401:
 									this._auth.logout()
 									this._router.navigateByUrl('/login')
-									return throwError(() => new Error('Error 401: You are not authorized to make this request.'));
+									return throwError(() => new Error());
 							default:
-								this._toast.error("Unknown Error: Please try again or contact Support.")
+								// this._toast.error("Unknown Error: Please try again or contact Support.")
 							return throwError(() => error);
 						}
 					}

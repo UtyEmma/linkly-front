@@ -15,11 +15,13 @@ import { environment } from 'src/environments/environment';
 export class WelcomeComponent implements OnInit {
 
 	appUrl = environment.appBaseURL
+	appName = environment.appName
 	newPageForm!: FormGroup
 	submitted: boolean = false
 	loading = false
 	httpErrors: any = {}
 	httpErrorMessage = ""
+	user!: any
 
 	constructor(
 		private _fb: FormBuilder,
@@ -30,6 +32,7 @@ export class WelcomeComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
+		this._userService.current.subscribe(user => this.user = user)
 		this.newPageForm = this._fb.group({
 		title: ['', Validators.compose([Validators.required])],
 		slug: ['', Validators.compose([Validators.required])],

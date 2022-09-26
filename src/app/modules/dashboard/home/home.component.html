@@ -1,5 +1,5 @@
 <app-dashboard >
-    <div class="py-5 max-w-7xl mx-auto">
+    <div class="py-5 max-w-7xl mx-auto h-full">
         <app-welcome *ngIf="user?.pages && user?.pages.length < 1"></app-welcome>
         <app-main *ngIf="user?.pages && user?.pages.length > 0" ></app-main>
     </div>

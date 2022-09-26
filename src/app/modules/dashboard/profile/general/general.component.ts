@@ -33,7 +33,7 @@ export class GeneralComponent implements OnInit {
       this.profileForm = this._fb.group({
         'name' : [this.user?.name, Validators.compose([Validators.required])],
         'email': [this.user?.email, Validators.compose([Validators.required, Validators.email])],
-        'image': []
+        'avatar': []
       })
     })
     
@@ -41,21 +41,21 @@ export class GeneralComponent implements OnInit {
 
   updatePage(){
     this.loading = true
-    this._http.put(`user/update`, this.profileForm.value)
-    .pipe(catchError((error: HttpErrorResponse) => this.onError(error)))
-    .subscribe(
-      (res: any) => {
-        if(res.data?.user) this._user.set(res.data?.user)
-        this.loading = false
-      }
-    )
+    this._http.put(`user`, this.profileForm.value)
+              .pipe(catchError((error: HttpErrorResponse) => this.onError(error)))
+              .subscribe(
+                (res: any) => {
+                  if(res.data?.user) this._user.set(res.data?.user)
+                  this.loading = false
+                }
+              )
   }
 
   updateImg(e: any){
     if(e.target.files.length > 0){
       toBase64(e.target.files[0], (base64String: any) => 
         this.profileForm.patchValue({
-          image: base64String
+          avatar: base64String
         })
       )
     }

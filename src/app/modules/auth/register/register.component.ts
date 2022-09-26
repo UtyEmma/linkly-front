@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, FormBuilder, Validators, ValidationErrors} from '@angular/forms'
+import {FormGroup, FormBuilder, Validators} from '@angular/forms'
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/services/auth/auth.service';
-import { IResponse } from 'src/types/http-response';
 import { catchError, Observable, of, throwError } from 'rxjs';
-import { HttpErrors } from 'src/library/http';
 import { HttpErrorService } from 'src/app/providers/services/http/errors/http-error.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +19,7 @@ export class RegisterComponent implements OnInit {
   loading: boolean = false
   httpErrors: any = {};
   httpErrorMessage: string = ""
+  appUrl = environment.appBaseURL
 
   constructor(
 	private _fb: FormBuilder, 
@@ -29,6 +29,8 @@ export class RegisterComponent implements OnInit {
 	private _err: HttpErrorService) { }
 
   ngOnInit(): void {
+	if(this._auth.status()) this._router.navigateByUrl('/')
+	
     this.registerForm = this._fb.group({
       name: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required, Validators.email])],

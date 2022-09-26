@@ -7,7 +7,7 @@ import { PageService } from 'src/app/providers/services/pages/page.service';
 
 type ILabels = 'Jan' | 'Feb' | 'Mar' | 'Apr' | 'May' | 'Jun' | 'Jul' | 'Aug' | 'Sep' | 'Oct' | 'Nov' | 'Dec'
 
-type ChartDataType = Record<string, any[]>
+type ChartDataType = Record<'views' | 'visits' | 'clicked', any[]>
 
 @Component({
   selector: 'app-activity-chart',
@@ -19,7 +19,11 @@ export class ActivityChartComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   show: boolean = false
-  @Input('stats') stats!: any
+  @Input('stats') stats!: Record<'views' | 'visits' | 'clicks', number[]>
+
+  isVisited = false
+  isViewed = false
+  isClicked = false
   
   labels: ILabels[] = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
   public barChartData!: ChartData<'bar' | 'line'>
@@ -50,12 +54,15 @@ export class ActivityChartComponent implements OnInit {
   };
 
   ngOnInit(){
+    this.isVisited = this.stats['visits'].every(value => value > 0)
+    this.isClicked = this.stats['clicks'].every(val => val > 0)
+    this.isViewed = this.stats['views'].every(val => val > 0)
     this.barChartData = {
       labels: this.labels,
       datasets: [
-        { data: this.stats.visits, label: 'Visits', type: 'bar' },
-        { data: this.stats.views, label: 'Views', type: 'bar' },
-        {data: this.stats.clicks, label: 'Clicks', type: 'line'}
+        { data: this.stats['visits'], label: 'Visits', type: 'bar' },
+        { data: this.stats['views'], label: 'Views', type: 'bar' },
+        {data: this.stats['clicks'], label: 'Clicks', type: 'line'}
       ],
     };
   }

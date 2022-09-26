@@ -1,5 +1,5 @@
-<div>
-  <div *ngIf="stats">
+<div *ngIf="stats">
+  <div *ngIf="(isViewed || isVisited || isClicked)">
     <div style="display: block">
       <canvas baseChart
         [data]="barChartData"
@@ -10,5 +10,8 @@
       </canvas>
     </div>
   </div>
+
+
+  <app-unavailable-data *ngIf="!(isViewed || isVisited || isClicked)"></app-unavailable-data>
 </div>
 <!-- [type]="barChartType" -->

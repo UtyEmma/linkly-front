@@ -23,6 +23,7 @@ import { ModalComponent } from './components/modal/modal/modal.component';
 import {DialogModule} from '@angular/cdk/dialog';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { TagsInputComponent } from './components/tags-input/tags-input.component';
+import { SvgPipe } from './pipes/svg/svg.pipe';
 
 const Icons : any = FeatherIcons
 @NgModule({
@@ -36,7 +37,8 @@ const Icons : any = FeatherIcons
     ImgResizeComponent,
     ModalComponent,
     AvatarComponent,
-    TagsInputComponent
+    TagsInputComponent,
+    SvgPipe
   ],
   imports: [
     CommonModule,
@@ -60,7 +62,8 @@ const Icons : any = FeatherIcons
     ImgResizeComponent,
     ModalComponent,
     AvatarComponent,
-    TagsInputComponent
+    TagsInputComponent,
+    SvgPipe
   ],
   providers: [
     [ LyTheme2 ],

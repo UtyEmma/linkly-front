@@ -7,8 +7,8 @@ import { Component, OnInit, Input, ElementRef, Output, EventEmitter, ViewChild }
 })
 export class SelectImgComponent implements OnInit {
 
-  defaultSrc = 'https://placeimg.com/192/192/people'
   @Input('src') src: string = ""
+  @Input('alt') alt: string = ""
   @Input('name') name!: string
 
   @Output('change') change = new EventEmitter()
@@ -17,8 +17,7 @@ export class SelectImgComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   updateSrc(e: any){
     const file = e.target.files[0]

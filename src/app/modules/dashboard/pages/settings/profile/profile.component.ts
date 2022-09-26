@@ -7,6 +7,7 @@ import { HttpErrorService } from 'src/app/providers/services/http/errors/http-er
 import { toFormData } from 'src/library/forms';
 import * as _ from 'lodash'
 import { toBase64 } from 'src/library/file';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { toBase64 } from 'src/library/file';
 export class ProfileComponent implements OnInit {
 
   @Input('page') page: any
+  appUrl = environment.appBaseURL
   infoForm!: FormGroup
   loading: boolean = false
   logo: any

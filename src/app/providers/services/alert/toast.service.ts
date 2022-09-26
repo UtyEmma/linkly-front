@@ -25,12 +25,12 @@ export class ToastService {
   }
    
   
-  success(message: string, options: any){
+  success(message: string, options: any = {}){
     Notify.merge(options)
     Notify.success(message)
   }
 
-  error(message: string){
+  error(message: string, options: any = {}){
     Notify.failure(message)
   }
 }

@@ -31,7 +31,9 @@ import { DevicesChartComponent } from './analytics/devices-chart/devices-chart.c
 import { MockupMobileComponent } from './mockup-mobile/mockup-mobile.component';
 import { LocationChartComponent } from './analytics/location-chart/location-chart.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { TopbarComponent } from './layout/topbar/topbar.component'
+import { TopbarComponent } from './layout/topbar/topbar.component';
+import { ReferrerComponent } from './analytics/referrer/referrer.component';
+import { UnavailableDataComponent } from './analytics/unavailable-data/unavailable-data.component'
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { TopbarComponent } from './layout/topbar/topbar.component'
     MockupMobileComponent,
     LocationChartComponent,
     SidebarComponent,
-    TopbarComponent
+    TopbarComponent,
+    ReferrerComponent,
+    UnavailableDataComponent
   ],
   imports: [
     CommonModule,

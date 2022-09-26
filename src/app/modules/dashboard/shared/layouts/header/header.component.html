@@ -2,17 +2,17 @@
     <div class="max-w-screen-xl px-4 py-4 mx-auto sm:px-6 lg:px-8 ">
       <div class="flex items-center justify-between sm:gap-4">
         <a routerLink="/" >          
-          <img class="h-10 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt="Workflow">
+          <img class="h-8 w-auto" src="assets/images/logo.svg" alt="Leadaa">
         </a>
   
         <div class="flex items-center justify-between gap-8">  
           <div class="dropdown dropdown-end w-auto">
             <label tabindex="0" class="flex cursor-pointer space-x-3 items-center w-auto transition rounded-lg group shrink-0">
-                <app-avatar [src]="user?.image" className="w-10 h-10" textSize="2" [alt]="user.name" ></app-avatar>
+                <app-avatar [src]="user?.avatar" className="w-8 h-8" textSize="" [alt]="user?.name" ></app-avatar>
       
                 <p class="hidden ml-2 text-xs text-left md:block">
-                  <strong class="block font-medium">{{user.name}}</strong>
-                  <span class="text-gray-500" > {{user.email}} </span>
+                  <strong class="block font-medium">{{user?.name}}</strong>
+                  <span class="text-gray-500" > {{user?.email}} </span>
                 </p>
       
                 <i-feather name="chevron-down"></i-feather>
