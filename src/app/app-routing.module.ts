@@ -19,9 +19,6 @@ const mainPageRoutes : Routes = [
   { path: '', loadChildren: () => import('./modules/front/front.module').then(m => m.FrontModule) },
 ]
 
-const frontPageRoute : Routes = [
-]
-
 const appRoutes = () : Routes => {
   const {value, exists} = subdomain()
   if(exists && value === 'app') return dashboardRoutes 

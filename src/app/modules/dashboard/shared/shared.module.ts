@@ -5,10 +5,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { DashboardComponent } from '../dashboard.component';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
-import { UserService } from 'src/app/providers/services/user/user.service';
 import { RouterModule } from '@angular/router';
 import {SharedModule as Shared} from '../../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

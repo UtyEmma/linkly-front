@@ -31,37 +31,41 @@ export class LinkPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._route.params.subscribe((param: any) => this.slug = param.slug);
-    this.session_id = _cookies.get(this.session_key)
-    this._http.post(`page/${this.slug}`, {
-      session: this.session_id,
-      device: this.getDevice(),
-      referrer: document.referrer
-    }).subscribe(
-      (res: any) => {
-        this.page = res.data?.page
+    this._route.params.subscribe((param: any) => {
+      this.slug = param.slug
+      this.session_id = _cookies.get(this.session_key)
+      
+      this._http.post(`page/${this.slug}`, {
+        session: this.session_id,
+        device: this.getDevice(),
+        referrer: document.referrer
+      }).subscribe(
+        (res: any) => {
+          this.page = res.data?.page
+  
+          this._title.setTitle(this.page.meta_title || this.page.title)
+  
+          this._meta.addTags([
+            {name: 'description', content: this.page.meta_desc || this.page.desc},
+            {name: 'keywords', content: this.page.meta_tags || ""},
+            {property: 'og:locale', content: 'en_US'},
+            {property: 'og:url', content: 'WEBSITE WRL'},
+            {property: 'og:type', content: 'website'},
+            {property: 'og:title', content: this.page.meta_title || this.page.title},
+            {property: 'og:description', content: this.page.meta_desc || this.page.desc},
+            {property: 'og:image', content: this.page.logo || ''},
+            {name: 'twitter:card', content: 'summary'},
+            {name: 'twitter:title', content: this.page.meta_title || this.page.title},
+            {name: 'twitter:description', content: this.page.meta_desc || this.page.desc},
+            {name: 'twitter:url', content: "WEBSITE WRL"},
+            {name: 'twitter:image', content: this.page.logo || ''},
+          ])
+  
+          _cookies.set(this.session_key, res.data?.session)
+        }
+      )
 
-        this._title.setTitle(this.page.meta_title || this.page.title)
-
-        this._meta.addTags([
-          {name: 'description', content: this.page.meta_desc || this.page.desc},
-          {name: 'keywords', content: this.page.meta_tags || ""},
-          {property: 'og:locale', content: 'en_US'},
-          {property: 'og:url', content: 'WEBSITE WRL'},
-          {property: 'og:type', content: 'website'},
-          {property: 'og:title', content: this.page.meta_title || this.page.title},
-          {property: 'og:description', content: this.page.meta_desc || this.page.desc},
-          {property: 'og:image', content: this.page.logo || ''},
-          {name: 'twitter:card', content: 'summary'},
-          {name: 'twitter:title', content: this.page.meta_title || this.page.title},
-          {name: 'twitter:description', content: this.page.meta_desc || this.page.desc},
-          {name: 'twitter:url', content: "WEBSITE WRL"},
-          {name: 'twitter:image', content: this.page.logo || ''},
-        ])
-
-        _cookies.set(this.session_key, res.data?.session)
-      }
-    )
+    });
   }
 
   updateClick(link_id: string){

@@ -7,7 +7,6 @@ import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { WelcomeComponent } from './home/components/welcome/welcome.component';
 import { MainComponent } from './home/components/main/main.component';
-import { UserService } from 'src/app/providers/services/user/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageItemComponent } from './home/components/page-item/page-item.component';
 import { ProfileComponent } from './profile/profile.component';
