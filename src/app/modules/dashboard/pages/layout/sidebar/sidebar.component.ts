@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this._page.current.subscribe(page => this.page = page)
     this._user.current.subscribe((user: any) => {
-      this.pages = user.pages
+      this.pages = user?.pages
     })
   }
 

@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
 						.subscribe((res: any) => {
 							this.loading = false
 							this._auth.login(res.data.token, res.data.user)
-							this._router.navigateByUrl('/')
+							return this._router.navigateByUrl('/')
 						})
 		}
 	}

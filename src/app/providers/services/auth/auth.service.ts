@@ -34,7 +34,7 @@ export class AuthService {
     const date = new Date()
     _cookies.set(this.rememberTokenKey, token, {
       expires: date,
-      maxAge: 100
+      maxAge: 100,
     })
   }
 
@@ -63,9 +63,9 @@ export class AuthService {
   }
 
   logout(){
-    this._http.get('/logout').subscribe((res) => {})
-    _cookies.remove(this.key)
-    return this._router.navigateByUrl('/login')
+    this._http.get('logout').subscribe((res) => {})
+      _cookies.remove(this.key)
+      return this._router.navigateByUrl('/login')
   }
 
 }

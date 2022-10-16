@@ -5,7 +5,7 @@ import { LinkPageComponent } from './link-page/link-page.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
-  {path: ':slug', component: LinkPageComponent}
+  {path: ':ref', component: LinkPageComponent},
 ];
 
 @NgModule({

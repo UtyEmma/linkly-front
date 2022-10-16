@@ -7,7 +7,10 @@ export const environment = {
   apiBaseURL: 'http://localhost:8000/api',
   appBaseURL: `http://localhost:4200`,
   dashboardBaseURL: 'http://app.localhost:4200',
-  appName: 'Leadaa'
+  dashboardDomain: 'app.localhost:4200',
+  appDomain: 'localhost',
+  appName: 'Leadaa',
+  googleClientID: '255983912647-scjh6smc2mmtg6ajlqciig5cp62l3jm8.apps.googleusercontent.com'
 };
 
 

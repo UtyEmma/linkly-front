@@ -15,16 +15,17 @@ const dashboardRoutes : Routes = [
   { path: '', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
 ]
 
-const frontPageRoute : Routes = [
+const mainPageRoutes : Routes = [
   { path: '', loadChildren: () => import('./modules/front/front.module').then(m => m.FrontModule) },
+]
+
+const frontPageRoute : Routes = [
 ]
 
 const appRoutes = () : Routes => {
   const {value, exists} = subdomain()
-  if(exists && value === 'app') {
-    return dashboardRoutes
-  }
-  return frontPageRoute
+  if(exists && value === 'app') return dashboardRoutes 
+  return mainPageRoutes
 }
 
 @NgModule({

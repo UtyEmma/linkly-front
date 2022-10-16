@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImgResizeComponent } from './img-resize.component';
+import { GoogleAuthComponent } from './google-auth.component';
 
-describe('ImgResizeComponent', () => {
-  let component: ImgResizeComponent;
-  let fixture: ComponentFixture<ImgResizeComponent>;
+describe('GoogleAuthComponent', () => {
+  let component: GoogleAuthComponent;
+  let fixture: ComponentFixture<GoogleAuthComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImgResizeComponent ]
+      declarations: [ GoogleAuthComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ImgResizeComponent);
+    fixture = TestBed.createComponent(GoogleAuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

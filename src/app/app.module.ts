@@ -16,6 +16,9 @@ import { RecoverPasswordComponent } from './modules/auth/recover-password/recove
 import { ResetPasswordComponent } from './modules/auth/reset-password/reset-password.component';
 import { AppService } from './providers/services/app/app.service';
 import { ToastService } from './providers/services/alert/toast.service';
+import SocialAuthConfig from './providers/providers/social-auth.provider';
+import { SocialLoginModule } from '@abacritt/angularx-social-login';
+import { GoogleAuthComponent } from './modules/auth/components/google-auth/google-auth.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { ToastService } from './providers/services/alert/toast.service';
     RegisterComponent,
     RecoverPasswordComponent,
     ResetPasswordComponent,
+    GoogleAuthComponent
   ],
   imports: [
     BrowserModule,
@@ -32,13 +36,15 @@ import { ToastService } from './providers/services/alert/toast.service';
     SharedModule,
     ReactiveFormsModule,
     FrontModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SocialLoginModule
   ],
   providers: [
     ToastService,
     INTERCEPTORS,
     UserService,
-    AppService
+    AppService,
+    SocialAuthConfig
   ],
   bootstrap: [AppComponent]
 })

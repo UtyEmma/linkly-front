@@ -19,7 +19,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { ActivityChartComponent } from './analytics/activity-chart/activity-chart.component';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgChartsModule } from 'ng2-charts';
 import { BackgroundComponent } from './settings/theme/background/background.component';
 import { AppearanceComponent } from './appearance/appearance.component';
@@ -67,7 +66,6 @@ import { UnavailableDataComponent } from './analytics/unavailable-data/unavailab
     SharedModule,
     Shared,
     DragDropModule,
-    NgApexchartsModule,
     NgChartsModule
   ],
   providers: [

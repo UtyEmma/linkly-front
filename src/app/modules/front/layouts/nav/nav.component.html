@@ -33,7 +33,7 @@
         </li>
 
         <!-- btn -->
-        <a href="{{dashboardUrl}}/register" target="_blank" class="btn btn-primary md:hidden">
+        <a routerLink="/register" class="btn btn-primary md:hidden">
             Get Started
         </a>
         <!-- btn.// -->
@@ -42,10 +42,10 @@
 
     <!-- btn -->
     <div class="ml-auto space-x-4 flex">
-        <a href="{{dashboardUrl}}/login" target="_blank"  class="hidden lg:flex btn btn-primary btn-outline ">
+        <a [href]="dashboardUrl+'/login'"  class="hidden lg:flex btn btn-primary btn-outline ">
             Login
         </a>
-        <a href="{{dashboardUrl}}/register" target="_blank" class="hidden lg:flex btn btn-primary">
+        <a [href]="dashboardUrl+'/register'" class="hidden lg:flex btn btn-primary">
             Get Started
         </a>
     </div>

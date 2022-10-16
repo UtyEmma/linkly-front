@@ -12,18 +12,12 @@ import { FormsModule } from '@angular/forms';
 import { SelectImgComponent } from './components/select-img/select-img.component';
 import { SafePipe } from './pipes/safe/safe.pipe';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
-import { ImgResizeComponent } from './components/img-resize/img-resize.component';
-import { LyImageCropperModule } from '@alyle/ui/image-cropper';
-import { LyButtonModule } from '@alyle/ui/button';
-import { LyIconModule } from '@alyle/ui/icon';
-import { LySliderModule } from '@alyle/ui/slider';
-import { LyTheme2, LY_THEME, LY_THEME_NAME } from '@alyle/ui';
-import { MinimaLight, MinimaDark } from '@alyle/ui/themes/minima';
 import { ModalComponent } from './components/modal/modal/modal.component';
 import {DialogModule} from '@angular/cdk/dialog';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { TagsInputComponent } from './components/tags-input/tags-input.component';
 import { SvgPipe } from './pipes/svg/svg.pipe';
+import { CropperComponent } from './components/cropper/cropper.component';
 
 const Icons : any = FeatherIcons
 @NgModule({
@@ -34,11 +28,11 @@ const Icons : any = FeatherIcons
     DatepickerComponent,
     SelectImgComponent,
     SafePipe,
-    ImgResizeComponent,
     ModalComponent,
     AvatarComponent,
     TagsInputComponent,
-    SvgPipe
+    SvgPipe,
+    CropperComponent
   ],
   imports: [
     CommonModule,
@@ -46,9 +40,7 @@ const Icons : any = FeatherIcons
     FeatherModule.pick(Icons),
     TablerIconsModule.pick(TablerIcons),
     VirtualScrollerModule,
-    LyImageCropperModule,
-    LySliderModule,
-    DialogModule
+    DialogModule,
   ],
   exports: [
     FeatherModule,
@@ -59,19 +51,11 @@ const Icons : any = FeatherIcons
     DatepickerComponent,
     SelectImgComponent,
     SafePipe,
-    ImgResizeComponent,
     ModalComponent,
     AvatarComponent,
     TagsInputComponent,
-    SvgPipe
-  ],
-  providers: [
-    [ LyTheme2 ],
-    // Theme that will be applied to this module
-    { provide: LY_THEME_NAME, useValue: 'minima-light' },
-    { provide: LY_THEME, useClass: MinimaLight, multi: true }, // name: `minima-light`
-    { provide: LY_THEME, useClass: MinimaDark, multi: true }, // name: `minima-dark`
-    // Gestures
+    SvgPipe,
+    CropperComponent
   ]
 })
 export class SharedModule { }

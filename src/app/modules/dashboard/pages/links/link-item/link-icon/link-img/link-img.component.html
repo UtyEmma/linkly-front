@@ -10,8 +10,42 @@
   <div class="modal-box relative">
       <label for="my-modal-3" class="btn btn-sm btn-circle  absolute right-2 top-2">✕</label>
 
-      <div class="modal-middle h-4/5 mt-16">
-        <app-img-resize src="assets/images/man-with-phone.jpg" (upload)="uploadImage($event)"></app-img-resize>
+      <div class="modal-middle h-4/5 mt-16">  
+        
+        <div *ngIf="!croppedImg" >
+          <app-cropper #cropper [cropperOptions]="{ checkCrossOrigin: true, aspectRatio: 1 / 1 }" (export)="getImage($event)" [imageUrl]="img"></app-cropper>
+          
+          <div class="py-3 flex justify-between">
+            <label for="img-input" class="btn btn-primary font-normal">
+              <input type="file" id="img-input" hidden #imginput (change)="changeImg($event)" >
+              <i-tabler name="photo"></i-tabler>
+              <span class="ms-2">Select Image</span>
+            </label>
+            
+            <button (click)="crop()" class="btn btn-primary space-x-2">
+              <i-tabler name="crop"></i-tabler>
+              Crop
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="croppedImg" class="px-5">
+          <div class="w-100 ">
+            <img [src]="croppedImg" class="w-100 h-100 rounded-xl" alt="" srcset="">
+          </div>
+
+          <div class="flex justify-between mt-5">
+            <button (click)="reset()" class="btn btn-primary space-x-2">
+              <i-tabler name="rotate"></i-tabler>
+              <span>Reset</span>
+            </button>
+            <button (click)="uploadImage($event)" class="btn btn-primary space-x-2">
+              <i-tabler name="upload"></i-tabler>
+              <span>Upload</span>
+            </button>
+          </div>
+        </div>
+        
       </div>
   </div>
-</div>
+</div> 
